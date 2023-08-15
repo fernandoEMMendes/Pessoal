@@ -1,0 +1,16 @@
+
+.titulo {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5vw;
+    text-align: center;
+    justify-items: center;
+}
+
+.alignProdutos {
+    width: 50%;
+}
+
+img {
+    border-radius: 1rem;
+}
