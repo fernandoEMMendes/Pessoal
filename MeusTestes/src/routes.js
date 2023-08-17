@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, } from "react-router-dom"
 
-import Header from "./Components/Header"
+import Home from "./Pages/Home"
 
 import RPGTeste from "./Pages/RPGTeste"
 import AloneDark from "./Pages/AloneDark"
@@ -12,7 +12,8 @@ function Rotas() {
             <div>
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<RPGTeste />} />
+                        <Route path="/" element={<Home />} />
+                        <Route path="/RPGTeste" element={<RPGTeste />} />
                         <Route path="/AloneDark" element={<AloneDark />} />
                     </Routes>
                 </BrowserRouter>
