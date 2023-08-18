@@ -1,4 +1,6 @@
-import React, { useRef, useState } from "react"
+import "./AloneDark.css"
+
+import React, { useState } from "react"
 
 
 
@@ -11,9 +13,10 @@ function AloneDark() {
 
 
   const [Torch, setTorch] = useState(false)
-  const [verificarTorch, setVerificarTorch] = useState(false)
 
 
+  
+  
   function Coletar() {
     if (ContGraveto >= 5) { setContGraveto(ContGraveto + 0) }
     else setContGraveto(ContGraveto + 1)
@@ -21,22 +24,24 @@ function AloneDark() {
     if (ContGraveto >= 5) { setFrases("It's too heavy, I can't carry anymore") }
   }
 
+  
+  
+  
   function CraftTorch() {
-    if (verificarTorch(true)) {
+    if (Torch) {
       alert("I don't need another one.")
       return
     }
 
     if (ContGraveto < 5) { alert("Not enough resources") }
-    else { setContGraveto(ContGraveto - 5) || setTorch(true) || setVerificarTorch(true) }
+    else { setContGraveto(ContGraveto - 5) || setOnHand("Torch") || setTorch((current) => !current) }
+    
   }
 
-  //-----------------------------------------------------------  
-  //if (setTorch(true)) { document.body.style.backgroundColor = "darkorange" }  
-  //else {document.body.style.backgroundColor = "white"} 
-  //-----------------------------------------------------------
-  //-----------------------------------------------------------
-
+  
+  
+  
+  
   return (
 
     <div>
@@ -47,7 +52,8 @@ function AloneDark() {
       <h2>{ContGraveto}</h2>
       <button onClick={Coletar}>Gather sticks</button> <br /> <br />
 
-      <button onClick={CraftTorch}>Torch (5 Sticks)</button>
+      {!Torch && <button onClick={CraftTorch}>Torch (5 Sticks)</button>}
+      {Torch && <a class="TextAcquired">Torch acquired</a>}
 
     </div>
   );
