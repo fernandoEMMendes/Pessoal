@@ -1,6 +1,15 @@
 .TextAcquired{
     font-family: 'Times New Roman', Times, serif;
     font-size: 17px;
-    color: black;
-    text-decoration: line-through;
+    color: goldenrod; 
+}
+
+.GatherBar {
+    justify-content: flex;
+    flex-direction: row;
+}
+
+.Margin {
+    text-align: center;
+    margin-top: 30px;
 }
