@@ -30,14 +30,10 @@ function AloneDark() {
   }
 
 
+ 
 
 
   function CraftTorch() {
-    if (Torch) {
-      alert("I don't need another one.")
-      return
-    }
-
     if (ContGraveto < 5) { alert("Not enough resources") }
     else { setContGraveto(ContGraveto - 5) || setOnHand("Torch") || setTorch((current) => !current) }
 
@@ -68,6 +64,7 @@ function AloneDark() {
 
           <h2>Sticks: {ContGraveto}</h2>
           {!Torch && <button onClick={Coletar}>Gather sticks</button>}
+          
 
           {Torch && <h2>Rocks: {ContPedra}</h2>}
           {Torch && <button onClick={Coletar}>Gather materials</button>}

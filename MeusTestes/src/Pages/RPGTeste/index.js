@@ -143,7 +143,7 @@ export default function Home() {
                         <a>HP: {vida2}</a>  <br />
                         <a>FOR: (1 x D10)</a>   <br />
                         <a>Precisão: [80%]</a>  <br /> <br />
-                        <a>{"<--o-o- (Ò_Ó)"}</a>  <br />
+                        <a>{"<--o-o- (Ò_Ó)"}</a> 
                     </div>
                 </div>
             </div>
