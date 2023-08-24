@@ -6,21 +6,24 @@ import React, { useState } from "react"
 
 function AloneDark() {
 
+  //----------------------------------Constantes-----------------------------------------//
+
   //Cont = Contador
   const [OnHand, setOnHand] = useState("None")
 
   const [ContGraveto, setContGraveto] = useState(0)
   const [ContPedra, setContPedra] = useState(0)
 
-  const [Torch, setTorch] = useState(false)
+  const [Tocha, setTocha] = useState(false)
+  const [Fogueira, setFogueira] = useState(false)
 
 
 
 
   function Coletar() {
-    if (!Torch) { setContGraveto(ContGraveto + 1) }
+    if (!Tocha) { setContGraveto(ContGraveto + 1) }
 
-    if (Torch) {
+    if (Tocha) {
       if (Math.round(Math.random() * 10) < 5) {
         setContGraveto(ContGraveto + 1)
       } else {
@@ -30,13 +33,18 @@ function AloneDark() {
   }
 
 
- 
 
 
-  function CraftTorch() {
-    if (ContGraveto < 5) { alert("Not enough resources") }
-    else { setContGraveto(ContGraveto - 5) || setOnHand("Torch") || setTorch((current) => !current) }
 
+  //----------------------------------Construir------------------------------------------//
+  function CraftTocha() {
+    if (ContGraveto < 5) { alert("Sem recursos suficientes") }
+    else { setContGraveto(ContGraveto - 5) || setTocha((current) => !current) }
+  }
+
+  function CraftFogueira() {
+    if (ContGraveto < 15 || ContPedra < 20) { alert("Sem recursos suficientes") }
+    else { setContGraveto(ContGraveto - 15) || setContPedra(ContPedra - 20) || setFogueira((current) => !current) }
   }
 
 
@@ -50,34 +58,44 @@ function AloneDark() {
         <div>
 
           {/*Caixa de equipamentos*/}
-          {Torch &&
+          {Tocha &&
             <div>
-              <a>Equipped</a>
 
               <select>
-                <option onChange={(e) => setOnHand(e.target.value)} value="none">None</option>
-                <option onChange={(e) => setOnHand(e.target.value)} value="Torch">Torch</option>
+                <option onChange={(e) => setOnHand(e.target.value)} value="Nada">Nada</option>
+                <option onChange={(e) => setOnHand(e.target.value)} value="Tocha">Tocha</option>
               </select>
 
             </div>
           } <br /> <br />
 
-          <h2>Sticks: {ContGraveto}</h2>
-          {!Torch && <button onClick={Coletar}>Gather sticks</button>}
-          
+          {/*Contadores e coletar*/}
+          <h2>Gravetos: {ContGraveto}</h2>
+          {!Tocha && <button onClick={Coletar}>Coletar gravetos</button>}
 
-          {Torch && <h2>Rocks: {ContPedra}</h2>}
-          {Torch && <button onClick={Coletar}>Gather materials</button>}
+
+          {Tocha && <h2>Pedras: {ContPedra}</h2>}
+          {Tocha && <button onClick={Coletar}>Coletar materiais</button>}
 
         </div>
 
         <br /> <br />
 
+        {/*Contruir*/}
         <div>
 
-          {!Torch && <button onClick={CraftTorch}>Torch (5 Sticks)</button>}
+          {!Tocha && <button onClick={CraftTocha}>Tocha (5 gravetos)</button>}
+          {Tocha && <button onClick={CraftFogueira}>Fogueira (15 gravetos | 20 pedras)</button>}
 
         </div >
+
+        <br /> <br />
+
+        {/*Cenario*/}
+        <div>
+
+          {Fogueira && <h1>Fogueira</h1>}
+        </div>
 
       </div>
     </div>
