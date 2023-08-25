@@ -5,24 +5,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
-<body>
-    <h1>Hydrotech</h1>
-    <a>Senac EMED 2023</a>
+<body class="bg">
 
-    <br />
 
-    <div class="col-md6">
-        <img src="" alt="placeholder" />
+    <div class="bg-warning">
+        <div class="text-center container-sm">
+            <img src="./imgs/hydrotech.png" class="w-25" alt="HYDROTECH " />
+        </div>
     </div>
 
     <br />
 
-    <div class="col-md6">
-        <div class="row">
+    <div class="col-md">
+        <div class="row-md text-start">
             <a>placeholder</a>
         </div>
 
-        <div class="row">
+        <div class="row-md text-end">
             <a>placeholder
         </div>
     </div>
