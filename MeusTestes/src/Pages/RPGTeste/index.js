@@ -15,11 +15,11 @@ export default function Home() {
     function ataque() {
 
         if (vida2 <= 0) {
-            alert("Venceu!")
+            alert("Você Venceu!")
             return
         } else {
             if (vida <= 0) {
-                alert("Perdeu!")
+                alert("Você Perdeu!")
                 return
             } else {
 
