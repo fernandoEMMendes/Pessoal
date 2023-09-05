@@ -1,6 +1,7 @@
 import "./AloneDark.css"
-
 import React, { useState } from "react"
+
+import FogueiraIMG from "../../Components/imgs/fogueira.png"
 
 
 
@@ -15,6 +16,7 @@ function AloneDark() {
   const [ContPedra, setContPedra] = useState(0)
 
   const [Tocha, setTocha] = useState(false)
+  const [ContTocha, setContTocha] = useState(0)
   const [Fogueira, setFogueira] = useState(false)
 
 
@@ -36,21 +38,26 @@ function AloneDark() {
 
 
 
-  //----------------------------------Construir------------------------------------------//
+  //----------------------------------Funções--------------------------------------------//
   function CraftTocha() {
-    if (ContGraveto < 5) { alert("Sem recursos suficientes") }
-    else { setContGraveto(ContGraveto - 5) || setTocha((current) => !current) }
+    if (ContGraveto < 5) { alert("Sem recursos suficientes") } else {
+      if (!Tocha) {
+        { setContGraveto(ContGraveto - 5) || setTocha((current) => !current) }
+      } else { setContGraveto(ContGraveto - 5) || setContTocha(ContTocha + 1) }
+    }
   }
 
   function CraftFogueira() {
-    if (ContGraveto < 15 || ContPedra < 20) { alert("Sem recursos suficientes") }
-    else { setContGraveto(ContGraveto - 15) || setContPedra(ContPedra - 20) || setFogueira((current) => !current) }
+    if (!Fogueira) {
+      if (ContGraveto < 15 || ContPedra < 20) { alert("Sem recursos suficientes") }
+      else { setContGraveto(ContGraveto - 15) || setContPedra(ContPedra - 20) || setFogueira((current) => !current) }
+    }
   }
 
 
 
 
-
+  //----------------------------------Front----------------------------------------------//
   return (
     <div>
       <div class="Margin">
@@ -59,14 +66,21 @@ function AloneDark() {
 
           {/*Caixa de equipamentos*/}
           {Tocha &&
-            <div>
+            <>
+              <div>
+                <h4>equipamento</h4>
+                <select>
+                  <option onChange={(e) => setOnHand(e.target.value)} value="Nada">Nada</option>
+                  <option onChange={(e) => setOnHand(e.target.value)} value="Tocha">Tocha</option>
+                </select>
+              </div>
 
-              <select>
-                <option onChange={(e) => setOnHand(e.target.value)} value="Nada">Nada</option>
-                <option onChange={(e) => setOnHand(e.target.value)} value="Tocha">Tocha</option>
-              </select>
+              <br />
 
-            </div>
+              <div>
+                {Tocha && <h4>Tochas: {ContTocha}</h4>}
+              </div>
+            </>
           } <br /> <br />
 
           {/*Contadores e coletar*/}
@@ -84,7 +98,7 @@ function AloneDark() {
         {/*Contruir*/}
         <div>
 
-          {!Tocha && <button onClick={CraftTocha}>Tocha (5 gravetos)</button>}
+          <button onClick={CraftTocha}>Tocha (5 gravetos)</button>
           {Tocha && <button onClick={CraftFogueira}>Fogueira (15 gravetos | 20 pedras)</button>}
 
         </div >
@@ -94,7 +108,7 @@ function AloneDark() {
         {/*Cenario*/}
         <div>
 
-          {Fogueira && <h1>Fogueira</h1>}
+          {Fogueira && <img src={FogueiraIMG} alt="Fogueira" />}
         </div>
 
       </div>
@@ -102,4 +116,4 @@ function AloneDark() {
   );
 }
 
-export default AloneDark;
+export default AloneDark
