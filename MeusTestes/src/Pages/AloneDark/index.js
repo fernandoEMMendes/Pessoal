@@ -99,7 +99,10 @@ function AloneDark() {
         <div>
 
           <button onClick={CraftTocha}>Tocha (5 gravetos)</button>
-          {Tocha && <button onClick={CraftFogueira}>Fogueira (15 gravetos | 20 pedras)</button>}
+          
+          
+          
+          {(Tocha && !Fogueira) && <button onClick={CraftFogueira}>Fogueira (15 gravetos | 20 pedras)</button>}
 
         </div >
 
