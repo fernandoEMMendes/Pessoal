@@ -1,16 +1,25 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import "./RPGTeste.css"
 
 export default function Home() {
 
-    const [vida, setvida] = useState(100)
-    const [vida2, setvida2] = useState(100)
+    //vida personagem
+    const [vida, setvida] = useState(1)
+    //vida inimigo
+    const [vida2, setvida2] = useState(1)
 
+    //um objeto com valores
+    let stats = { vida: 100, dano: Math.random(Math.random() * 5)}
+    let stats2 = { vida: 250 }
 
-
-
-
+    useEffect(() => {
+        async function inimigo_stats() {
+            setvida(stats.vida)
+            setvida2(stats2.vida)
+        }
+        inimigo_stats()
+    }, []);
 
     function ataque() {
 
@@ -143,7 +152,7 @@ export default function Home() {
                         <a>HP: {vida2}</a>  <br />
                         <a>FOR: (1 x D10)</a>   <br />
                         <a>Precisão: [80%]</a>  <br /> <br />
-                        <a>{"<--o-o- (Ò_Ó)"}</a> 
+                        <a>{"<--o-o- (Ò_Ó)"}</a>
                     </div>
                 </div>
             </div>

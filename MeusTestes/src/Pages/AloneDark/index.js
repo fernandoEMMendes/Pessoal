@@ -21,6 +21,8 @@ function AloneDark() {
 
 
 
+  
+
 
   function Coletar() {
     if (!Tocha) { setContGraveto(ContGraveto + 1) }
