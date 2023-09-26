@@ -65,7 +65,6 @@ function AloneDark() {
       <div class="Margin">
 
         <div>
-
           {/*Caixa de equipamentos*/}
           {Tocha &&
             <>
@@ -92,20 +91,17 @@ function AloneDark() {
 
           {Tocha && <h2>Pedras: {ContPedra}</h2>}
           {Tocha && <button onClick={Coletar}>Coletar materiais</button>}
-
         </div>
 
         <br /> <br />
 
         {/*Contruir*/}
         <div>
-
           <button onClick={CraftTocha}>Tocha (5 gravetos)</button>
           
           
           
           {(Tocha && !Fogueira) && <button onClick={CraftFogueira}>Fogueira (15 gravetos | 20 pedras)</button>}
-
         </div >
 
         <br /> <br />

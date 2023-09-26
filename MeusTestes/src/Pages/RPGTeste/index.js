@@ -9,59 +9,62 @@ export default function Home() {
     //vida inimigo
     const [vida2, setvida2] = useState(1)
 
-    //um objeto com valores
-    let stats = { vida: 100, dano: Math.random(Math.random() * 5)}
-    let stats2 = { vida: 250 }
+    //objetos com valores
+    let statsPG = { vida: 100, dano: Math.round(Math.random() * 4 + 1) }
+    
+    //if () {}
+
+    let statsMOB = { vida: 100, dano: Math.round(Math.random() * 9 + 1) }
 
     useEffect(() => {
         async function inimigo_stats() {
-            setvida(stats.vida)
-            setvida2(stats2.vida)
+            setvida(statsPG.vida)
+            setvida2(statsMOB.vida)
         }
         inimigo_stats()
     }, []);
 
     function ataque() {
 
-        if (vida2 <= 0) {
-            alert("Você Venceu!")
+        if (vida <= 0) {
+            alert("Você Perdeu!")
             return
         } else {
-            if (vida <= 0) {
-                alert("Você Perdeu!")
+            if (vida2 <= 0) {
+                alert("Você Venceu!")
                 return
             } else {
 
                 //calculo - erro (personagem) + critico (inimigo)
-                if (Math.round(Math.random() * 10) <= 1) {
+                if (Math.round(Math.random() * 100 <= 10)) {
 
                     alert("O ataque falhou! Você abaixou sua defesa o suficiente para um acerto crítico!")
-                    if (Math.round(Math.random() * 10) <= 1) {
+                    if (Math.round(Math.random() * 100 <= 20)) {
 
                         alert("O inimigo errou! Considere-se a salvo.")
                         return
 
                     } else {
-                        setvida(vida - Math.round(Math.random() * 9 + 11))
+                        setvida(vida - (statsMOB.dano + 10))
                     }
                     return
 
                     //calculo dano (personagem)
                 } else {
-                    setvida2(vida2 - Math.round(Math.random() * 4 + 1))
+                    setvida2(vida2 - statsPG.dano)
                 }
             }
 
 
 
             //calculo - erro (inimigo) ou dano (inimigo)
-            if (Math.round(Math.random() * 10) <= 1) {
+            if (Math.round(Math.random() * 100 <= 20)) {
 
                 alert("O inimigo errou! Considere-se a salvo.")
                 return
 
             } else {
-                setvida(vida - Math.round(Math.random() * 9 + 1))
+                setvida(vida - (statsMOB.dano))
             }
         }
     }
@@ -73,12 +76,12 @@ export default function Home() {
 
     function cura() {
 
-        if (vida2 <= 0) {
-            alert("Venceu!")
+        if (vida <= 0) {
+            alert("Você Perdeu!")
             return
         } else {
-            if (vida <= 0) {
-                alert("Perdeu!")
+            if (vida2 <= 0) {
+                alert("Você Venceu!")
                 return
             } else {
 
@@ -88,35 +91,32 @@ export default function Home() {
                 } else {
 
                     //calculo - erro (personagem)
-                    if (Math.round(Math.random() * 20 <= 1)) {
-                        alert("Você recua, colocando-o em um estado defensivo [+50% DEF], infelizmente você se descuida e deixa o frasco cair, quebrando-o em pedaços e deixando o líquido vermelho entrar em meio ao terreno rochoso")
+                    if (Math.round(Math.random() * 100 <= 5)) {
+                        alert("Você recua, rapidamente agarrando uma poção de dentro de sua mochila, infelizmente você se descuida e deixa o frasco cair, quebrando-o em pedaços e deixando o líquido vermelho entrar em meio ao terreno rochoso")
 
                         //calculo - erro (inimigo)
-                        if (Math.round(Math.random() * 10) <= 1) {
+                        if (Math.round(Math.random() * 100) <= 20) {
 
                             alert("O inimigo errou! Considere-se a salvo.")
                             return
 
                         } else {
-                            setvida(vida - Math.round(Math.random() * 4 + 1))
+                            setvida(vida - statsMOB.dano)
                             return
                         }
 
                     } else {
-                        alert("Você recua, colocando-o em um estado defensivo [+50% DEF] e utiliza um elixir de cor carmesim.")
+                        alert("Você recua e utiliza um elixir de cor carmesim.")
                         setvida(vida + (25))
 
                         //calculo - erro (inimigo)
-                        if (Math.round(Math.random() * 10) <= 1) {
+                        if (Math.round(Math.random() * 100) <= 20) {
 
                             alert("O inimigo errou! Considere-se a salvo.")
 
                         } else {
-                            setvida(vida - Math.round(Math.random() * 4 + 1))
+                            setvida(vida - statsMOB)
                             setvida(vida + (25))
-                            if (vida >= 100) {
-                                setvida(100)
-                            }
                         }
                     }
                 }
