@@ -10,11 +10,13 @@ export default function Home() {
     const [vida2, setvida2] = useState(1)
 
     //objetos com valores
-    let statsPG = { vida: 100, dano: Math.round(Math.random() * 4 + 1) }
+
+    //Dano está com problema, não está sendo reconhecido pelo funções de ataque
+    let statsPG = { vida: 100, dano: Math.floor(Math.random() * 4 + 1) }
     
     //if () {}
 
-    let statsMOB = { vida: 100, dano: Math.round(Math.random() * 9 + 1) }
+    let statsMOB = { vida: 100, dano: Math.floor(Math.random() * 9 + 1) }
 
     useEffect(() => {
         async function inimigo_stats() {
