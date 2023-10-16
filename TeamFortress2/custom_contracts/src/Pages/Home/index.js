@@ -8,24 +8,30 @@ export default function Home() {
     const [escolha2, setEscolha2] = useState("")
     const [escolha3, setEscolha3] = useState("")
 
-    const scoutPrimary = ["Scattergun", "Force-A-Nature", "Shortstop", "Sodapopper", "Baby Face's Blaster", "Back Scatter"]
-    var Primary
+    var primary
+    var secondary
+    var melee
 
-    const scoutSecondary = ["Pistol", "Bonk! Atomic Punch", "Crit-A-Cola", "Mad Milk", "Winger", "Pretty Boy's Pocket Pistol", "Flying Guillotine"]
-    var Secondary
+    //array of arrays : ScoutWeapons[linha][coluna]
+    //EX: ScoutWeapons[2][1] => pistol
 
-    const scoutMelee = ["Bat", "Holy Mackerel", "Sandman", "Candy Cane", "Boston Basher", "Sun-on-a-Stick", "Fan O'War", "Atomizer", "Wrap Assassin"]
-    var Melee
+    //Criar um grande Math.random() que ira selecionar uma das 9 classes e então por meio de ifs vai escolher qual armas roletar"
+
+    var scoutPrimary = ["Scattergun", "Force-A-Nature", "Shortstop", "Sodapopper", "Baby Face's Blaster", "Back Scatter"]
+    var scoutSecondary = ["Pistol", "Bonk! Atomic Punch", "Crit-A-Cola", "Mad Milk", "Winger", "Pretty Boy's Pocket Pistol", "Flying Guillotine"]
+    var scoutMelee = ["Bat", "Holy Mackerel", "Sandman", "Candy Cane", "Boston Basher", "Sun-on-a-Stick", "Fan O'War", "Atomizer", "Wrap Assassin"]
+
+
 
     function click() {
-        Primary = Math.floor(Math.random() * 5)
-        setEscolha1(scoutPrimary[Primary])
+        primary = Math.floor(Math.random() * 5)
+        setEscolha1(scoutPrimary[primary])
 
-        Secondary = Math.floor(Math.random() * 6)
-        setEscolha2(scoutSecondary[Secondary])
+        secondary = Math.floor(Math.random() * 6)
+        setEscolha2(scoutSecondary[secondary])
 
-        Melee = Math.floor(Math.random() * 8)
-        setEscolha3(scoutMelee[Melee])
+        melee = Math.floor(Math.random() * 8)
+        setEscolha3(scoutMelee[melee])
     }
 
     return (
