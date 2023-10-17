@@ -12,6 +12,8 @@ export default function Home() {
     var secondary
     var melee
 
+    var selectClass
+
     //array of arrays : ScoutWeapons[linha][coluna]
     //EX: ScoutWeapons[2][1] => pistol
 
@@ -21,17 +23,36 @@ export default function Home() {
     var scoutSecondary = ["Pistol", "Bonk! Atomic Punch", "Crit-A-Cola", "Mad Milk", "Winger", "Pretty Boy's Pocket Pistol", "Flying Guillotine"]
     var scoutMelee = ["Bat", "Holy Mackerel", "Sandman", "Candy Cane", "Boston Basher", "Sun-on-a-Stick", "Fan O'War", "Atomizer", "Wrap Assassin"]
 
+    var soldierPrimary = ["Rocket Launcher", "DickJoke", "Direct Hit", "Black Box", "Rocket Jumper", "Liberty Launcher", "Cow Mangler 5000", "Beggar's Bazooka", "Air Strike"]
+    var soldierSecondary = ["Shotgun", "Buff Banner", "Gunboats", "Battalion's Backup", "Concheror", "Mantreads", "Reserve Shooter", "Righteous Bison", "B.A.S.E. Jumper", "Panic Attack"]
+    var soldierMelee = ["Shovel", "Equalizer", "Pain Train", "Half-Zatoichi", "Disciplinary Action", "Market Gardener", "Escape Plan"]
+
 
 
     function click() {
-        primary = Math.floor(Math.random() * 5)
-        setEscolha1(scoutPrimary[primary])
+        selectClass = Math.floor(Math.random() * 2)
 
-        secondary = Math.floor(Math.random() * 6)
-        setEscolha2(scoutSecondary[secondary])
+        if (selectClass === 0) {
+            primary = Math.floor(Math.random() * 5)
+            setEscolha1(scoutPrimary[primary])
 
-        melee = Math.floor(Math.random() * 8)
-        setEscolha3(scoutMelee[melee])
+            secondary = Math.floor(Math.random() * 6)
+            setEscolha2(scoutSecondary[secondary])
+
+            melee = Math.floor(Math.random() * 8)
+            setEscolha3(scoutMelee[melee])
+        }
+
+        if (selectClass === 1) {
+            primary = Math.floor(Math.random() * 8)
+            setEscolha1(soldierPrimary[primary])
+
+            secondary = Math.floor(Math.random() * 9)
+            setEscolha2(soldierSecondary[secondary])
+
+            melee = Math.floor(Math.random() * 6)
+            setEscolha3(soldierMelee[melee])
+        }
     }
 
     return (
