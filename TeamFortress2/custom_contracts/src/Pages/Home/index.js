@@ -7,6 +7,7 @@ export default function Home() {
     const [escolha1, setEscolha1] = useState("")
     const [escolha2, setEscolha2] = useState("")
     const [escolha3, setEscolha3] = useState("")
+    const [classe, setClasse] = useState("???")
 
     var selectClass
     var primary
@@ -60,6 +61,8 @@ export default function Home() {
         selectClass = Math.round(Math.random() * 9)
 
         if (selectClass === 0) {
+            setClasse("Scout")
+
             primary = Math.round(Math.random() * 5)
             setEscolha1(scoutPrimary[primary])
 
@@ -71,6 +74,8 @@ export default function Home() {
         }
 
         if (selectClass === 1) {
+            setClasse("Soldier")
+
             primary = Math.round(Math.random() * 8)
             setEscolha1(soldierPrimary[primary])
 
@@ -82,6 +87,8 @@ export default function Home() {
         }
 
         if (selectClass === 2) {
+            setClasse("Pyro")
+
             primary = Math.round(Math.random() * 5)
             setEscolha1(pyroPrimary[primary])
 
@@ -93,6 +100,8 @@ export default function Home() {
         }
 
         if (selectClass === 3) {
+            setClasse("Demoman")
+
             primary = Math.round(Math.random() * 6)
             setEscolha1(demoPrimary[primary])
 
@@ -104,6 +113,8 @@ export default function Home() {
         }
 
         if (selectClass === 4) {
+            setClasse("Heavy")
+
             primary = Math.round(Math.random() * 4)
             setEscolha1(heavyPrimary[primary])
 
@@ -115,6 +126,8 @@ export default function Home() {
         }
 
         if (selectClass === 5) {
+            setClasse("Enginner")
+
             primary = Math.round(Math.random() * 5)
             setEscolha1(enginnerPrimary[primary])
 
@@ -126,6 +139,8 @@ export default function Home() {
         }
 
         if (selectClass === 6) {
+            setClasse("Medic")
+
             primary = Math.round(Math.random() * 3)
             setEscolha1(medicPrimary[primary])
 
@@ -137,6 +152,8 @@ export default function Home() {
         }
 
         if (selectClass === 7) {
+            setClasse("Sniper")
+
             primary = Math.round(Math.random() * 6)
             setEscolha1(sniperPrimary[primary])
 
@@ -148,6 +165,8 @@ export default function Home() {
         }
 
         if (selectClass === 8) {
+            setClasse("Spy")
+
             primary = Math.round(Math.random() * 4)
             setEscolha1(spyPrimary[primary])
 
@@ -164,6 +183,10 @@ export default function Home() {
         <>
             <div className="titulo">
                 <h1>TF2 Randomizer</h1>
+            </div>
+
+            <div className="classe">
+                <h1>{classe}</h1>
             </div>
 
             <div className="escolha1">
