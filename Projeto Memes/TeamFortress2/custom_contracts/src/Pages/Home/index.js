@@ -8,16 +8,31 @@ export default function Home() {
     const [escolha2, setEscolha2] = useState("")
     const [escolha3, setEscolha3] = useState("")
     const [classe, setClasse] = useState("???")
+    const [escolha4, setEscolha4] = useState("???")
 
     var selectClass
     var primary
     var secondary
     var melee
+    var objective
 
-    //array of arrays : ScoutWeapons[linha][coluna]
-    //EX: ScoutWeapons[2][1] => pistol
+    function WeaponRandomizer(num, num2, num3, array, array2, array3) {
+        primary = Math.round(Math.random() * num)
+        setEscolha1(array[primary])
 
-    //Criar um grande Math.random() que ira selecionar uma das 9 classes e então por meio de ifs vai escolher qual armas roletar"
+        secondary = Math.round(Math.random() * num2)
+        setEscolha2(array2[secondary])
+
+        melee = Math.round(Math.random() * num3)
+        setEscolha3(array3[melee])
+    }
+
+    function ContractRandomizer(num) {
+        objective = Math.round(Math.random() * num)
+        setEscolha4(contracts[objective])
+    }
+
+    //array of arrays : nome[linha][coluna]
 
     var scoutPrimary = ["Scattergun", "Force-A-Nature", "Shortstop", "Sodapopper", "Baby Face's Blaster", "Back Scatter"]
     var scoutSecondary = ["Pistol", "Bonk! Atomic Punch", "Crit-A-Cola", "Mad Milk", "Winger", "Pretty Boy's Pocket Pistol", "Flying Guillotine"]
@@ -55,128 +70,57 @@ export default function Home() {
     var spyMelee = ["Knife", "Your Eternal Reward", "Conniver's Kunai", "Big Earner", "Spy-cicle"]
     var spyWatch = ["Invis Watch", "Cloak and Dagger", "Dead Ringer"]
 
-    var contracts = ["TBA"]
+    var contracts = ["Double Double Donk", "1 Backstab", "1 Market Garden", "Kill + ''Calma calabreso''", "Taunt Kill", "Érica Triplekill", "Touch Grass", "Touch Grass (IRL)"]
 
     function click() {
         selectClass = Math.round(Math.random() * 9)
 
         if (selectClass === 0) {
             setClasse("Scout")
-
-            primary = Math.round(Math.random() * 5)
-            setEscolha1(scoutPrimary[primary])
-
-            secondary = Math.round(Math.random() * 6)
-            setEscolha2(scoutSecondary[secondary])
-
-            melee = Math.round(Math.random() * 8)
-            setEscolha3(scoutMelee[melee])
+            WeaponRandomizer(5, 6, 8, scoutPrimary, scoutSecondary, scoutMelee)
         }
 
         if (selectClass === 1) {
             setClasse("Soldier")
-
-            primary = Math.round(Math.random() * 8)
-            setEscolha1(soldierPrimary[primary])
-
-            secondary = Math.round(Math.random() * 9)
-            setEscolha2(soldierSecondary[secondary])
-
-            melee = Math.round(Math.random() * 6)
-            setEscolha3(soldierMelee[melee])
+            WeaponRandomizer(8, 9, 6, soldierPrimary, soldierSecondary, soldierMelee)
         }
 
         if (selectClass === 2) {
             setClasse("Pyro")
-
-            primary = Math.round(Math.random() * 5)
-            setEscolha1(pyroPrimary[primary])
-
-            secondary = Math.round(Math.random() * 8)
-            setEscolha2(pyroSecondary[secondary])
-
-            melee = Math.round(Math.random() * 10)
-            setEscolha3(pyroMelee[melee])
+            WeaponRandomizer(5, 8, 10, pyroPrimary, pyroSecondary, pyroMelee)
         }
 
         if (selectClass === 3) {
             setClasse("Demoman")
-
-            primary = Math.round(Math.random() * 6)
-            setEscolha1(demoPrimary[primary])
-
-            secondary = Math.round(Math.random() * 6)
-            setEscolha2(demoSecondary[secondary])
-
-            melee = Math.round(Math.random() * 7)
-            setEscolha3(demoMelee[melee])
+            WeaponRandomizer(6, 6, 7, demoPrimary, demoSecondary, demoMelee)
         }
 
         if (selectClass === 4) {
             setClasse("Heavy")
-
-            primary = Math.round(Math.random() * 4)
-            setEscolha1(heavyPrimary[primary])
-
-            secondary = Math.round(Math.random() * 6)
-            setEscolha2(heavySecondary[secondary])
-
-            melee = Math.round(Math.random() * 6)
-            setEscolha3(heavyMelee[melee])
+            WeaponRandomizer(4, 6, 6, heavyPrimary, heavySecondary, heavyMelee)
         }
 
         if (selectClass === 5) {
             setClasse("Enginner")
-
-            primary = Math.round(Math.random() * 5)
-            setEscolha1(enginnerPrimary[primary])
-
-            secondary = Math.round(Math.random() * 2)
-            setEscolha2(enginnerSecondary[secondary])
-
-            melee = Math.round(Math.random() * 5)
-            setEscolha3(enginnerMelee[melee])
+            WeaponRandomizer(5, 2, 5, enginnerPrimary, enginnerSecondary, enginnerMelee)
         }
 
         if (selectClass === 6) {
             setClasse("Medic")
-
-            primary = Math.round(Math.random() * 3)
-            setEscolha1(medicPrimary[primary])
-
-            secondary = Math.round(Math.random() * 3)
-            setEscolha2(medicSecondary[secondary])
-
-            melee = Math.round(Math.random() * 4)
-            setEscolha3(medicMelee[melee])
+            WeaponRandomizer(3, 3, 4, medicPrimary, medicSecondary, medicMelee)
         }
 
         if (selectClass === 7) {
             setClasse("Sniper")
-
-            primary = Math.round(Math.random() * 6)
-            setEscolha1(sniperPrimary[primary])
-
-            secondary = Math.round(Math.random() * 5)
-            setEscolha2(sniperSecondary[secondary])
-
-            melee = Math.round(Math.random() * 3)
-            setEscolha3(sniperMelee[melee])
+            WeaponRandomizer(6, 5, 3, sniperPrimary, sniperSecondary, sniperMelee)
         }
 
         if (selectClass === 8) {
             setClasse("Spy")
-
-            primary = Math.round(Math.random() * 4)
-            setEscolha1(spyPrimary[primary])
-
-            secondary = Math.round(Math.random() * 4)
-            setEscolha2(spyMelee[secondary])
-
-            melee = Math.round(Math.random() * 2)
-            setEscolha3(spyWatch[melee])
+            WeaponRandomizer(4, 4, 2, spyPrimary, spyMelee, spyWatch)
         }
 
+        ContractRandomizer(7)
     }
 
     return (
@@ -207,7 +151,7 @@ export default function Home() {
 
             <div className="contrato">
                 <a>Contrato:</a> <br />
-                <a>{contracts}</a>
+                <input readOnly value={escolha4} />
             </div>
         </>
     )
