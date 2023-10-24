@@ -8,7 +8,9 @@ export default function Home() {
     const [escolha2, setEscolha2] = useState("")
     const [escolha3, setEscolha3] = useState("")
     const [classe, setClasse] = useState("???")
-    const [escolha4, setEscolha4] = useState("???")
+    const [contrato1, setContrato1] = useState("???")
+    const [contrato2, setContrato2] = useState("???")
+    const [contrato3, setContrato3] = useState("???")
 
     var selectClass
     var primary
@@ -29,7 +31,7 @@ export default function Home() {
 
     function ContractRandomizer(num) {
         objective = Math.round(Math.random() * num)
-        setEscolha4(contracts[objective])
+        setContrato1(contracts[objective])
     }
 
     //array of arrays : nome[linha][coluna]
@@ -151,7 +153,9 @@ export default function Home() {
 
             <div className="contrato">
                 <a>Contrato:</a> <br />
-                <input readOnly value={escolha4} />
+                <input readOnly value={contrato1} />
+                <input readOnly value={contrato2} />
+                <input readOnly value={contrato3} />
             </div>
         </>
     )
