@@ -3,7 +3,8 @@
 function App() {
   return (
     <div>
-      <input type={}
+      <input type="time" />
+      <input type="date" />
     </div>
   );
 }
