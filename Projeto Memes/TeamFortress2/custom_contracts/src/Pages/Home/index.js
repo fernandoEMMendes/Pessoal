@@ -16,7 +16,6 @@ export default function Home() {
     var primary
     var secondary
     var melee
-    var objective
 
     function WeaponRandomizer(num, num2, num3, array, array2, array3) {
         primary = Math.round(Math.random() * num)
@@ -29,9 +28,28 @@ export default function Home() {
         setEscolha3(array3[melee])
     }
 
-    function ContractRandomizer(num) {
-        objective = Math.round(Math.random() * num)
-        setContrato1(contracts[objective])
+    function ContractRandomizer() {
+
+        let objective1 = Math.round(Math.random() * contracts.length)
+        let objective2 = Math.round(Math.random() * contracts.length)
+        let objective3 = Math.round(Math.random() * contracts.length)
+
+        //const loop = () => {
+        //    while (objective2 === objective1) {
+        //        if (objective2 === objective1) { objective2 = Math.round(Math.random() * contracts.length) }
+        //    }
+        //
+        //    while (objective3 === objective2 || objective3 === objective1) {
+        //        if (objective3 === objective2) { objective3 = Math.round(Math.random() * contracts.length) }
+        //    }
+        //
+        setContrato1(contracts[objective1])
+        setContrato2(contracts[objective2])
+        setContrato3(contracts[objective3])
+
+        //    if (objective1 != objective2 || objective1 != objective3) { setTimeout(loop, 0) }
+        //}
+        //loop()
     }
 
     //array of arrays : nome[linha][coluna]
@@ -122,7 +140,7 @@ export default function Home() {
             WeaponRandomizer(4, 4, 2, spyPrimary, spyMelee, spyWatch)
         }
 
-        ContractRandomizer(7)
+        ContractRandomizer()
     }
 
     return (
