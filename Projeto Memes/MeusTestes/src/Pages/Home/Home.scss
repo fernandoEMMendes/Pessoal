@@ -1,0 +1,29 @@
+.titleCSS {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    h1 {
+        font-size: 2.8rem;
+    }
+}
+
+.optionsCSS {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 2rem;
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    :hover {
+        background-color: lightblue;
+        color: black;
+    }
+
+    :link {
+        text-decoration: none;
+    }
+}

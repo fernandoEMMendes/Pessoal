@@ -7,7 +7,7 @@ import BancadaIMG from "../../Components/imgs/bancada.png"
 
 
 
-function AloneDark() {
+export default function Test_ClickerGame() {
 
   //----------------------------------Constantes-----------------------------------------//
 
@@ -146,5 +146,3 @@ function AloneDark() {
     </div>
   );
 }
-
-export default AloneDark

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 
 import "./RPGTeste.css"
 
-export default function Home() {
+export default function Test_TurnBased() {
 
     //vida personagem
     const [vida, setvida] = useState(1)
