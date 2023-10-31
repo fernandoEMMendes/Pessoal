@@ -1,4 +1,4 @@
-import "./AloneDark.css"
+import "./Test_ClickerGame.css"
 import React, { useState } from "react"
 
 import FogueiraIMG from "../../Components/imgs/fogueira.png"

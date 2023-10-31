@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-import "./RPGTeste.css"
+import "./Test_TurnBased.css"
 
 export default function Test_TurnBased() {
 
