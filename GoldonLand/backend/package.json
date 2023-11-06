@@ -1,7 +1,7 @@
 {
   "name": "backend_goldonland",
-  "version": "1.0",
-  "description": "test_ver",
+  "version": "1.0.0",
+  "description": "tests",
   "main": "server.ts",
   "author": "FM",
   "license": "MIT",
@@ -16,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
     "prisma": "^5.5.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"
