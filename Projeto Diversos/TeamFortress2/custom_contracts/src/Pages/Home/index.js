@@ -8,49 +8,16 @@ export default function Home() {
     const [escolha2, setEscolha2] = useState("")
     const [escolha3, setEscolha3] = useState("")
     const [classe, setClasse] = useState("???")
-    const [contrato1, setContrato1] = useState("???")
-    const [contrato2, setContrato2] = useState("???")
-    const [contrato3, setContrato3] = useState("???")
+    const [obj1, setObj1] = useState()
+    const [obj2, setObj2] = useState()
+    const [obj3, setObj3] = useState()
 
     var selectClass
     var primary
     var secondary
     var melee
 
-    function WeaponRandomizer(num, num2, num3, array, array2, array3) {
-        primary = Math.round(Math.random() * num)
-        setEscolha1(array[primary])
-
-        secondary = Math.round(Math.random() * num2)
-        setEscolha2(array2[secondary])
-
-        melee = Math.round(Math.random() * num3)
-        setEscolha3(array3[melee])
-    }
-
-    function ContractRandomizer() {
-
-        let objective1 = Math.round(Math.random() * contracts.length)
-        let objective2 = Math.round(Math.random() * contracts.length)
-        let objective3 = Math.round(Math.random() * contracts.length)
-
-        //const loop = () => {
-        //    while (objective2 === objective1) {
-        //        if (objective2 === objective1) { objective2 = Math.round(Math.random() * contracts.length) }
-        //    }
-        //
-        //    while (objective3 === objective2 || objective3 === objective1) {
-        //        if (objective3 === objective2) { objective3 = Math.round(Math.random() * contracts.length) }
-        //    }
-        //
-        setContrato1(contracts[objective1])
-        setContrato2(contracts[objective2])
-        setContrato3(contracts[objective3])
-
-        //    if (objective1 != objective2 || objective1 != objective3) { setTimeout(loop, 0) }
-        //}
-        //loop()
-    }
+    var contratosSalvos = []
 
     //array of arrays : nome[linha][coluna]
 
@@ -143,6 +110,24 @@ export default function Home() {
         ContractRandomizer()
     }
 
+    function WeaponRandomizer(num, num2, num3, array, array2, array3) {
+        primary = Math.round(Math.random() * num)
+        setEscolha1(array[primary])
+
+        secondary = Math.round(Math.random() * num2)
+        setEscolha2(array2[secondary])
+
+        melee = Math.round(Math.random() * num3)
+        setEscolha3(array3[melee])
+    }
+
+    function ContractRandomizer() {
+
+        setObj1(Math.floor(Math.random() * contracts.length))
+        setObj2(Math.floor(Math.random() * contracts.length))
+        setObj3(Math.floor(Math.random() * contracts.length))
+    }
+
     return (
         <>
             <div className="titulo">
@@ -171,9 +156,9 @@ export default function Home() {
 
             <div className="contrato">
                 <a>Contrato:</a> <br />
-                <input readOnly value={contrato1} />
-                <input readOnly value={contrato2} />
-                <input readOnly value={contrato3} />
+                <input readOnly placeholder="???" value={contracts[obj1]} />
+                <input readOnly placeholder="???" value={contracts[obj2]} />
+                <input readOnly placeholder="???" value={contracts[obj3]} />
             </div>
         </>
     )
