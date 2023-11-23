@@ -1,6 +1,15 @@
 *{
     padding: 0;
     margin: 0;
-    background-color: bisque;
+    background-color: #121212;
     box-sizing: border-box;
 }
+
+//Cor de fundo símples
+//Cinza Escuro: #121212
+//Overlay: 0%
+//O fundo deve ter um contraste de distancia do conteúdo 
+//Utilizar uma sombra pequena e simplés
+//Cada camada deve conter um contraste diferente do Fundo
+//Começar com a segunda camada tendo Overlay: 5%
+//Cada camada seguinte deve ter +2% para realizar um contrate do anterior
