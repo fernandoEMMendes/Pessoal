@@ -1,6 +1,6 @@
 import prisma from "../../prisma";
 
-interface Create {
+interface Criar {
     categoryId: string
     name: string
     description: string
@@ -13,7 +13,7 @@ interface Create {
     userId: string
 }
 
-export class CreateInvService {
+export class CriarInvService {
     async execute({
         categoryId,
         name,
@@ -25,7 +25,7 @@ export class CreateInvService {
         mp_damage,
         quantity,
         userId
-    }: Create) {
+    }: Criar) {
 
         const verifyUser = await prisma.user.findFirst({
             where: {

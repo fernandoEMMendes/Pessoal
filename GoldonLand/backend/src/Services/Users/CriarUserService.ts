@@ -1,13 +1,13 @@
 import prisma from "../../prisma"
 
-interface create {
+interface Criar {
     name: string
     email: string
     password: string
 }
 
-export class CreateUserService {
-    async execute({ name, email, password }: create) {
+export class CriarUserService {
+    async execute({ name, email, password }: Criar) {
         await prisma.user.create({
             data: {
                 name: name,
@@ -20,6 +20,6 @@ export class CreateUserService {
                 email: true
             }
         })
-        return { message: "User created successfully!" }
+        return { message: "Usuário criado com sucesso!" }
     }
 }

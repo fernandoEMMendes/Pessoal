@@ -1,11 +1,11 @@
 import prisma from "../../prisma";
 
-interface Create {
+interface Criar {
     name: string
 }
 
-export class CreateCategoryService {
-    async execute({ name }: Create) {
+export class CriarCategoryService {
+    async execute({ name }: Criar) {
         await prisma.category.create({
             data: {
                 name: name

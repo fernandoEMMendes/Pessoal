@@ -3,19 +3,20 @@ export const routes = Router()
 
 
 
-import { CreateUserController } from "./Controllers/Users/CreateUserController"
-import { CreateCategoryController } from "./Controllers/Category/CreateCategoryController"
-import { CreateInvController } from "./Controllers/Inventory/CreateInvController"
-import { ListCategoryController } from "./Controllers/Category/ListCategoryController"
-import { ListUserController } from "./Controllers/Users/ListUserController"
-import { ListInvController } from "./Controllers/Inventory/ListInvController"
+import { CriarUserController } from "./Controllers/Users/CriarUserController"
+import { CriarCategoryController } from "./Controllers/Category/CriarCategoryController"
+import { CriarInvController } from "./Controllers/Inventory/CriarInvController"
+
+import { ListarCategoryController } from "./Controllers/Category/ListarCategoryController"
+import { ListarUserController } from "./Controllers/Users/ListarUserController"
+import { ListarInvController } from "./Controllers/Inventory/ListarInvController"
 
 //Create
-routes.post("/CreateUser", new CreateUserController().handle)
-routes.post("/CreateCategory", new CreateCategoryController().handle)
-routes.post("/CreateItem", new CreateInvController().handle)
+routes.post("/CriarUsuario", new CriarUserController().handle)
+routes.post("/CriarCategoria", new CriarCategoryController().handle)
+routes.post("/CriarItem", new CriarInvController().handle)
 
 //List
-routes.get("/ListUser", new ListUserController().handle)
-routes.get("/ListCategory", new ListCategoryController().handle)
-routes.get("/ListItem", new ListInvController().handle)
+routes.get("/ListarUsuario", new ListarUserController().handle)
+routes.get("/ListarCategoria", new ListarCategoryController().handle)
+routes.get("/ListarItem", new ListarInvController().handle)

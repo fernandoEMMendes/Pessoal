@@ -1,6 +1,6 @@
 import prisma from "../../prisma";
 
-export class ListUserService {
+export class ListarUserService {
     async execute() {
         const response = await prisma.user.findMany({})
         return response

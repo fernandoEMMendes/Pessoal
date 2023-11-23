@@ -1,15 +1,15 @@
 import { Request, Response } from "express"
-import { CreateInvService } from "../../Services/Inventory/CreateinvService"
+import { CriarInvService } from "../../Services/Inventory/CriarInvService"
 
-export class CreateInvController {
+export class CriarInvController {
     async handle(req: Request, res: Response) {
         const {
             categoryId, name, description, strength,
             accuracy, defense, ac_crit,
             mp_damage, quantity, userId
         } = req.body
-        const create = new CreateInvService()
-        const response = await create.execute({
+        const criar = new CriarInvService()
+        const response = await criar.execute({
             categoryId, name, description, strength,
             accuracy, defense, ac_crit,
             mp_damage, quantity, userId
