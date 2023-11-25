@@ -14,21 +14,29 @@
 
 .alinharForm {
     text-align: center;
-    
+
     label {
         color: white;
         font-size: 45px;
     }
 
-    input {
+
+
+    input, input:focus {
+        border: 3px solid;
         background-color: white;
         color: black;
         font-size: 2rem;
+        box-shadow: 5px 10px;
     }
 
-    //onHover effect (input)
+    input:hover {
+        background-color: lightgray;
+    }
 
-    button {
+
+
+    button, button:hover {
         background-color: white;
         color: black;
         padding-top: 0.5rem;
@@ -36,5 +44,11 @@
         padding-right: 2rem;
         padding-bottom: 0.5rem;
         font-size: 2.5rem;
+        box-shadow: 5px 5px;
+    }
+
+    button:active {
+        transform: translateY(2px);
+        box-shadow: 3px 3px;
     }
 }

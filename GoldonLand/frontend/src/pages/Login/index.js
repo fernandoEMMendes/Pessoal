@@ -25,7 +25,7 @@ export default function Login() {
                     <br />
                     <input type="text" />
 
-                    <br />
+                    <br /> <br />
 
                     <label>Senha</label>
                     <br />
