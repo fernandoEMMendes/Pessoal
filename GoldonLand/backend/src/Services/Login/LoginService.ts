@@ -27,7 +27,7 @@ export class LoginService {
             process.env.AUTH_TOKEN,
             {
                 subject: usuario.id,
-                expiresIn: 30
+                expiresIn: "3h"
             }
         )
         return {

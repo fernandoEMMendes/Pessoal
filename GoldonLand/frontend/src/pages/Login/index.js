@@ -1,7 +1,8 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
-import { authContext } from "../../Contexts"
+import { AuthContext } from "../../Contexts"
+import apiLocal from "../../APIs/apiLocal"
 
 import "./Login.scss"
 //import placeholder from "../../imgs/placeholder.png"
@@ -9,12 +10,37 @@ import goldenland from "../../imgs/goldenland.jpg"
 
 export default function Login() {
     const navigation = useNavigate()
-    const { signIn } = useContext(authContext)
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
 
+    const { signIn } = useContext(AuthContext)
 
-    //sistema de login
+    useEffect(() => {
+        const lsToken = localStorage.getItem("@GLToken2023")
+        const token = JSON.parse(lsToken)
+        
+        if (!token) {
+            navigation('/')
+            return
+        } else if (token) {
+            async function verificaToken() {
+                const resposta = await apiLocal.get("/ListarUnicoUsuario", {
+                    headers: {
+                        Authorization: 'Bearer ' + `${token}`
+                    }
+                })
+                
+                if (resposta.data.dados) {
+                    navigation('/')
+                    return
+                } else if (resposta.data.id) {
+                    navigation('/Principal')
+                }
+            }
+            verificaToken()
+        }
+    }, [])
+
     async function handleLogin(e) {
         e.preventDefault(e)
 
@@ -24,10 +50,15 @@ export default function Login() {
         }
 
         try {
-            let data = { email, senha }
+            let data = {
+                email,
+                senha
+            }
             const response = await signIn(data)
             const token = response.data.token
             localStorage.setItem("@GLToken2023", JSON.stringify(token))
+            console.log(response)
+
             toast.success("Login efetuado com sucesso")
             navigation("/Principal")
             return
@@ -40,7 +71,7 @@ export default function Login() {
     return (
         <div>
             <div className="alinharTitulo">
-                <img src={goldenland} alt="logo"/>
+                <img src={goldenland} alt="logo" />
             </div>
 
             <div className="distancia"></div>

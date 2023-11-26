@@ -2,7 +2,7 @@ import { createContext, useState } from "react"
 import { toast } from "react"
 import apiLocal from "../APIs/apiLocal"
 
-export const authContext = createContext()
+export const AuthContext = createContext()
 
 export default function AuthProvider({ children }) {
     const [user, setUser] = useState("")
@@ -28,7 +28,8 @@ export default function AuthProvider({ children }) {
     async function signIn({ email, senha }) {
         try {
             const response = await apiLocal.post("/Login", {
-                email, senha
+                email,
+                senha
             })
             return response
         } catch (err) {
@@ -38,8 +39,8 @@ export default function AuthProvider({ children }) {
     }
 
     return (
-        <authContext.Provider value={{ isAuth, signIn, loginToken }}>
+        <AuthContext.Provider value={{ isAuth, signIn, loginToken }}>
             {children}
-        </authContext.Provider>
+        </AuthContext.Provider>
     )
 }
