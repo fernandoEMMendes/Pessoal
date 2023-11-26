@@ -1,6 +1,9 @@
 import { Router } from "express"
+import { isAuth } from "./Middleware/isAuth"
 export const routes = Router()
 
+//Login
+import { LoginController } from "./Controllers/Login/LoginController"
 
 //user
 import { CriarUserController } from "./Controllers/Users/CriarUserController"
@@ -16,15 +19,18 @@ import { CriarCategoryController } from "./Controllers/Category/CriarCategoryCon
 import { ListarCategoryController } from "./Controllers/Category/ListarCategoryController"
 
 
+//Login
+routes.post("/Login", new LoginController().handle)
+
 //user
 routes.post("/CriarUsuario", new CriarUserController().handle)
-routes.get("/ListarUsuario", new ListarUserController().handle)
-routes.get("/ListarUnicoUsuario", new ListarUnicoUserController().handle)
+routes.get("/ListarUsuario", isAuth, new ListarUserController().handle)
+routes.get("/ListarUnicoUsuario", isAuth, new ListarUnicoUserController().handle)
 
 //inv
-routes.post("/CriarItem", new CriarInvController().handle)
-routes.get("/ListarItem", new ListarInvController().handle)
+routes.post("/CriarItem", isAuth, new CriarInvController().handle)
+routes.get("/ListarItem", isAuth, new ListarInvController().handle)
 
 //category
-routes.post("/CriarCategoria", new CriarCategoryController().handle)
-routes.get("/ListarCategoria", new ListarCategoryController().handle)
+routes.post("/CriarCategoria", isAuth, new CriarCategoryController().handle)
+routes.get("/ListarCategoria", isAuth, new ListarCategoryController().handle)
