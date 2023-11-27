@@ -6,7 +6,7 @@ import apiLocal from "../../APIs/apiLocal"
 
 import "./Login.scss"
 //import placeholder from "../../imgs/placeholder.png"
-import goldenland from "../../imgs/goldenland.jpg"
+import goldenland from "../../imgs/goldenland.png"
 
 export default function Login() {
     const navigation = useNavigate()
