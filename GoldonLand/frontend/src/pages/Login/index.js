@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { toast } from "react-toastify"
 import { AuthContext } from "../../Contexts"
 import apiLocal from "../../APIs/apiLocal"
@@ -18,7 +18,7 @@ export default function Login() {
     useEffect(() => {
         const lsToken = localStorage.getItem("@GLToken2023")
         const token = JSON.parse(lsToken)
-        
+
         if (!token) {
             navigation('/')
             return
@@ -29,7 +29,7 @@ export default function Login() {
                         Authorization: 'Bearer ' + `${token}`
                     }
                 })
-                
+
                 if (resposta.data.dados) {
                     navigation('/')
                     return
@@ -78,7 +78,7 @@ export default function Login() {
 
             <div className="alinharForm">
                 <form onSubmit={handleLogin}>
-                    <label>Usuário</label>
+                    <label>Email</label>
                     <br />
                     <input type="text" value={email} onChange={(e) => { setEmail(e.target.value) }} />
 
@@ -92,6 +92,14 @@ export default function Login() {
 
                     <button type="submit">LOGIN</button>
                 </form>
+
+                <br /> <br />
+
+                <button>
+                    <a className="Link" href="/CriarUsuario">Novo? Cadastre-se!</a>
+                </button>
+
+                <br /> <br />
             </div>
         </div>
     )

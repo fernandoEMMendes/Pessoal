@@ -26,8 +26,7 @@ body {
 
 
 
-    input,
-    input:focus {
+    input, input:focus {
         border: 3px solid;
         background-color: white;
         color: black;
@@ -41,33 +40,7 @@ body {
 
 
 
-    button,
-    button:hover {
-        background-color: white;
-        color: black;
-        padding-top: 0.5rem;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        padding-bottom: 0.5rem;
-        font-size: 2.5rem;
-        box-shadow: 5px 5px;
-    }
-
-    button:active {
-        transform: translateY(2px);
-        box-shadow: 3px 3px;
-    }
-}
-
-.Link {
-    a, a:visited {
-        text-decoration: none;
-        color: black;
-    }
-
-
-    button,
-    button:hover {
+    button, button:hover {
         background-color: white;
         color: black;
         padding-top: 0.5rem;
