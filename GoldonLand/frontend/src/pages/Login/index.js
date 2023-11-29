@@ -95,9 +95,9 @@ export default function Login() {
 
                 <br /> <br />
 
-                <button>
-                    <a className="Link" href="/CriarUsuario">Novo? Cadastre-se!</a>
-                </button>
+                <a className="Link" href="/CriarUsuario">
+                    <button>Novo? Cadastre-se!</button>
+                </a>
 
                 <br /> <br />
             </div>

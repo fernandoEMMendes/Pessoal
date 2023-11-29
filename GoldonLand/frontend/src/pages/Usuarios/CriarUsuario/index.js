@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import apiLocal from "../../../APIs/apiLocal"
 import { toast } from "react-toastify"
 
@@ -6,7 +7,7 @@ export default function CriarUsuario() {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
+    const navigation = useNavigate()
 
     async function handleCriarConta(e) {
         e.preventDefault()
@@ -20,6 +21,7 @@ export default function CriarUsuario() {
                 name, email, password
             })
             toast.success("Usuário cadastrado com sucesso")
+            navigation("/")
 
         } catch (err) {
             toast.error(err.response.data.error)
@@ -29,9 +31,6 @@ export default function CriarUsuario() {
 
     return (
         <div>
-            <div className="alinharTitulo">
-                <h1>Criar Conta</h1>
-            </div>
 
             <div className="distancia"></div>
 
@@ -51,12 +50,14 @@ export default function CriarUsuario() {
 
                     <label>Senha</label>
                     <br />
-                    <input type="text" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                    <input type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
 
                     <br /><br />
 
                     <button type="submit">Cadastrar</button>
                 </form>
+                <br />
+                <a href="/"><button>Retornar</button></a>
             </div>
         </div>
     )
