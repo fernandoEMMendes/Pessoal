@@ -123,9 +123,32 @@ export default function Home() {
 
     function ContractRandomizer() {
 
+        //concertar essa merda fodida
+        //tela trava e congela a pagina inteira
+        //talvez seja na hora de verificar o numero
+        //ele pode estar verificando o valor errado
+
+        var numbers = []
+
         setObj1(Math.floor(Math.random() * contracts.length))
+        numbers.push(obj1)
+        
         setObj2(Math.floor(Math.random() * contracts.length))
+        numbers.push(obj2)
+        do {
+            numbers.pop()
+            setObj2(Math.floor(Math.random() * contracts.length))
+            numbers.push(obj2)
+        } while (numbers.includes(obj2))
+
+
         setObj3(Math.floor(Math.random() * contracts.length))
+        numbers.push(obj3)
+        do {
+            numbers.pop()
+            setObj3(Math.floor(Math.random() * contracts.length))
+            numbers.push(obj3)
+        } while (numbers.includes(obj3))
     }
 
     return (
