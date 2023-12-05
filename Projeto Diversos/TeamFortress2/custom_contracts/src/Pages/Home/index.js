@@ -111,6 +111,7 @@ export default function Home() {
     }
 
     function WeaponRandomizer(num, num2, num3, array, array2, array3) {
+
         primary = Math.round(Math.random() * num)
         setEscolha1(array[primary])
 
@@ -123,32 +124,18 @@ export default function Home() {
 
     function ContractRandomizer() {
 
-        //concertar essa merda fodida
-        //tela trava e congela a pagina inteira
-        //talvez seja na hora de verificar o numero
-        //ele pode estar verificando o valor errado
-
-        var numbers = []
-
         setObj1(Math.floor(Math.random() * contracts.length))
-        numbers.push(obj1)
+        contratosSalvos.push(obj1)
+        console.log(contratosSalvos)
         
         setObj2(Math.floor(Math.random() * contracts.length))
-        numbers.push(obj2)
-        do {
-            numbers.pop()
-            setObj2(Math.floor(Math.random() * contracts.length))
-            numbers.push(obj2)
-        } while (numbers.includes(obj2))
-
+        contratosSalvos.push(obj2)
+        console.log(contratosSalvos)
 
         setObj3(Math.floor(Math.random() * contracts.length))
-        numbers.push(obj3)
-        do {
-            numbers.pop()
-            setObj3(Math.floor(Math.random() * contracts.length))
-            numbers.push(obj3)
-        } while (numbers.includes(obj3))
+        contratosSalvos.push(obj3)
+        console.log(contratosSalvos)
+
     }
 
     return (
