@@ -19,6 +19,9 @@ export default function Home() {
 
     var contratosSalvos = []
 
+    //setObj1(Math.floor(Math.random() * contracts.length))
+    //contratosSalvos.push(obj1)
+
     //array of arrays : nome[linha][coluna]
 
     var scoutPrimary = ["Scattergun", "Force-A-Nature", "Shortstop", "Sodapopper", "Baby Face's Blaster", "Back Scatter"]
@@ -57,7 +60,7 @@ export default function Home() {
     var spyMelee = ["Knife", "Your Eternal Reward", "Conniver's Kunai", "Big Earner", "Spy-cicle"]
     var spyWatch = ["Invis Watch", "Cloak and Dagger", "Dead Ringer"]
 
-    var contracts = ["Double Double Donk", "1 Backstab", "1 Market Garden", "Kill + ''Calma calabreso''", "Taunt Kill", "Érica Triplekill", "Touch Grass", "Touch Grass (IRL)"]
+    var contracts = ["20x kills", "15x airbone kills", "7x primary kills", "12x Kill + Trash Talk", "3x Taunt Kill", "Érica Triplekill","7x enviroment hazard kill", "Touch Grass", "Touch Grass (IRL)"]
 
     function click() {
         selectClass = Math.round(Math.random() * 9)
@@ -126,15 +129,15 @@ export default function Home() {
 
         setObj1(Math.floor(Math.random() * contracts.length))
         contratosSalvos.push(obj1)
-        console.log(contratosSalvos)
-        
+        //console.log(contratosSalvos)
+
         setObj2(Math.floor(Math.random() * contracts.length))
         contratosSalvos.push(obj2)
-        console.log(contratosSalvos)
+        //console.log(contratosSalvos)
 
         setObj3(Math.floor(Math.random() * contracts.length))
         contratosSalvos.push(obj3)
-        console.log(contratosSalvos)
+        //console.log(contratosSalvos)
 
     }
 
