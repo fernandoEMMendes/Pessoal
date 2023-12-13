@@ -38,9 +38,37 @@ export default function App() {
 
           <View style={styles.ajustarMenu}>
             <Image
-              source={require("./src/imgs/placeholder.png")}
+              source={require("./src/imgs/expresso.jpg")}
               style={styles.imagem} />
             <Text style={styles.itemMenu}>Expresso</Text>
+          </View>
+
+          <View style={styles.ajustarMenu}>
+            <Image
+              source={require("./src/imgs/latte.png")}
+              style={styles.imagem} />
+            <Text style={styles.itemMenu}>Latte</Text>
+          </View>
+
+          <View style={styles.ajustarMenu}>
+            <Image
+              source={require("./src/imgs/macchiato.jpg")}
+              style={styles.imagem} />
+            <Text style={styles.itemMenu}>Macchiato</Text>
+          </View>
+
+          <View style={styles.ajustarMenu}>
+            <Image
+              source={require("./src/imgs/mocca.png")}
+              style={styles.imagem} />
+            <Text style={styles.itemMenu}>Mocca</Text>
+          </View>
+
+          <View style={styles.ajustarMenu}>
+            <Image
+              source={require("./src/imgs/interrogação.png")}
+              style={styles.imagem} />
+            <Text style={styles.itemMenu}>Especial</Text>
           </View>
 
           <View style={styles.separador}></View>
@@ -58,6 +86,10 @@ export default function App() {
         style={styles.backgroundImage}>
         <View style={styles.ajustarTela}>
           <Text style={styles.titulo}>Quem Somos?</Text>
+          <Text style={styles.descricao}>Junior Barbosa</Text>
+        <Text style={styles.descricao2}>Filho único de fámilia simplés, cheio de esperança e acima de tudo: amante do café</Text>
+        <Text style={styles.descricao}>Maria Antonia</Text>
+        <Text style={styles.descricao2}>Irmã de Junior e criadora da cafeteria Café Barbosa, "Começou como uma piada entre fámilia e acabou como um sonho"</Text>
         </View>
 
         <View style={styles.separador}></View>
@@ -117,11 +149,26 @@ const styles = StyleSheet.create({
 
   ajustarMenu: {
     flexDirection: "row",
-    justifyContent: "space-around"
+    justifyContent: "space-between"
   },
 
   itemMenu: {
     color: "white",
-    fontSize: 15,
-  }
+    fontSize: 40,
+    textAlign: "center",
+    textAlignVertical: "center"
+  },
+
+  //Quem Somos
+  descricao: {
+    color: "cyan",
+    fontSize: 40,
+    textAlign: "center",
+  },
+
+  descricao2: {
+    color: "white",
+    fontSize: 30,
+    textAlign: "center",
+  },
 });
