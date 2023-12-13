@@ -22,6 +22,7 @@ export default function App() {
 
           <View style={styles.separador}></View>
           <Button title='Quem Somos' onPress={() => navigation.navigate("QuemSomos")} />
+
         </View>
       </ImageBackground>
     )
@@ -70,10 +71,10 @@ export default function App() {
               style={styles.imagem} />
             <Text style={styles.itemMenu}>Especial</Text>
           </View>
-
-          <View style={styles.separador}></View>
-          <Button title='Voltar' onPress={() => navigation.navigate("Home")} />
         </View>
+
+        <View style={styles.separador}></View>
+        <Button title='Voltar' onPress={() => navigation.navigate("Home")} />
 
       </ImageBackground>
     )
@@ -87,13 +88,14 @@ export default function App() {
         <View style={styles.ajustarTela}>
           <Text style={styles.titulo}>Quem Somos?</Text>
           <Text style={styles.descricao}>Junior Barbosa</Text>
-        <Text style={styles.descricao2}>Filho único de fámilia simplés, cheio de esperança e acima de tudo: amante do café</Text>
-        <Text style={styles.descricao}>Maria Antonia</Text>
-        <Text style={styles.descricao2}>Irmã de Junior e criadora da cafeteria Café Barbosa, "Começou como uma piada entre fámilia e acabou como um sonho"</Text>
+          <Text style={styles.descricao2}>Filho de fámilia simplés, cheio de esperança e acima de tudo: amante do café</Text>
+          <Text style={styles.descricao}>Maria Antonia</Text>
+          <Text style={styles.descricao2}>Irmã de Junior e criadora da cafeteria Café Barbosa, "Começou como uma piada entre fámilia e acabou como um sonho"</Text>
         </View>
 
         <View style={styles.separador}></View>
         <Button title='Voltar' onPress={() => navigation.navigate("Home")} />
+
       </ImageBackground>
     )
   }
@@ -145,6 +147,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 100,
+    marginBottom: 15
   },
 
   ajustarMenu: {
@@ -156,7 +159,8 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 40,
     textAlign: "center",
-    textAlignVertical: "center"
+    textAlignVertical: "center",
+    marginBottom: 15
   },
 
   //Quem Somos
