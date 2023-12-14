@@ -23,6 +23,9 @@ export default function App() {
           <View style={styles.separador}></View>
           <Button title='Quem Somos' onPress={() => navigation.navigate("QuemSomos")} />
 
+          <View style={styles.separador}></View>
+          <Button title='Contatos' onPress={() => navigation.navigate("Contato")} />
+
         </View>
       </ImageBackground>
     )
@@ -74,6 +77,7 @@ export default function App() {
         </View>
 
         <View style={styles.separador}></View>
+        <Button title='Contatos' onPress={() => navigation.navigate("Contato")} />
         <Button title='Voltar' onPress={() => navigation.navigate("Home")} />
 
       </ImageBackground>
@@ -100,6 +104,38 @@ export default function App() {
     )
   }
 
+  function Contato({navigation}) {
+    return(
+      <ImageBackground
+        source={require("./src/imgs/coffeeShop.jpg")}
+        style={styles.backgroundImage}>
+<View style={styles.ajustarTela}>
+          <Text style={styles.titulo}>Contatos</Text>
+
+          <View style={styles.ajustarContato}>
+            <Image
+              source={require("./src/imgs/instagram.png")}
+              style={styles.imagem} />
+            <Text style={styles.itemContato}>@CafeBarbosa</Text>
+          </View>
+
+          <View style={styles.ajustarContato}>
+            <Image
+              source={require("./src/imgs/whatsapp.png")}
+              style={styles.imagem} />
+            <Text style={styles.itemContato}>(14)5555-1789</Text>
+          </View>
+          
+        </View>
+
+        <View style={styles.separador}></View>
+        <Button title='Cardapio' onPress={() => navigation.navigate("Cardapio")} />
+        <Button title='Voltar' onPress={() => navigation.navigate("Home")} />
+
+      </ImageBackground>
+    )
+  }
+
   return (
     <NavigationContainer>
       <StatusBar translucent={false} />
@@ -107,6 +143,7 @@ export default function App() {
         <Stack.Screen name='Home' component={Home} options={{ headerShown: false }} />
         <Stack.Screen name='Cardapio' component={Cardapio} options={{ headerShown: false }} />
         <Stack.Screen name='QuemSomos' component={QuemSomos} options={{ headerShown: false }} />
+        <Stack.Screen name='Contato' component={Contato} options={{headerShown: false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -141,15 +178,15 @@ const styles = StyleSheet.create({
     fontSize: 28,
     textAlign: "center"
   },
-
-  //Cardapio
+  
   imagem: {
     width: 100,
     height: 100,
     borderRadius: 100,
     marginBottom: 15
   },
-
+  
+  //Cardapio
   ajustarMenu: {
     flexDirection: "row",
     justifyContent: "space-between"
@@ -174,5 +211,19 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 30,
     textAlign: "center",
+  },
+
+  //Contato
+  ajustarContato: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+
+  itemContato: {
+    color: "white",
+    fontSize: 40,
+    textAlign: "center",
+    textAlignVertical: "center",
+    marginBottom: 15
   },
 });
