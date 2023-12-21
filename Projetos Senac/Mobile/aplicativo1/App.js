@@ -95,14 +95,14 @@ export default function App() {
 
               <View style={styles.ajustarMenu}>
                 <Image
-                  source={require("./src/imgs/martini.png")}
+                  source={require("./src/imgs/martini.jpg")}
                   style={styles.imagem} />
                 <Text style={styles.itemMenu}>Martini</Text>
               </View>
 
               <View style={styles.ajustarMenu}>
                 <Image
-                  source={require("./src/imgs/gelado.png")}
+                  source={require("./src/imgs/gelado.jpg")}
                   style={styles.imagem} />
                 <Text style={styles.itemMenu}>Gelado</Text>
               </View>
