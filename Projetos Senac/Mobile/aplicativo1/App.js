@@ -51,12 +51,14 @@ export default function App() {
             <View style={styles.ajustarTela}>
               <Text style={styles.titulo}>Cardapio</Text>
 
-              <View style={styles.ajustarMenu}>
-                <Image
-                  source={require("./src/imgs/expresso.jpg")}
-                  style={styles.imagem} />
-                <Text style={styles.itemMenu}>Expresso</Text>
-              </View>
+              <TouchableOpacity activeOpacity={0.8} style={styles.botaoMenu} onPress={() => navigation.navigate("Detalhe")}>
+                <View style={styles.ajustarMenu}>
+                  <Image
+                    source={require("./src/imgs/expresso.jpg")}
+                    style={styles.imagem} />
+                  <Text style={styles.itemMenu}>Expresso</Text>
+                </View>
+              </TouchableOpacity>
 
               <View style={styles.ajustarMenu}>
                 <Image
@@ -166,7 +168,7 @@ export default function App() {
             <Image
               source={require("./src/imgs/whatsapp.png")}
               style={styles.imagem} />
-            <Text style={styles.itemContato}>(14)5555-1789</Text>
+            <Text style={styles.itemContato}>(14)555-1789</Text>
           </View>
 
         </View>
@@ -185,6 +187,43 @@ export default function App() {
     )
   }
 
+  function Detalhe({ navigation }) {
+    return (
+      <ImageBackground
+        source={require("./src/imgs/coffeeShop.jpg")}
+        style={styles.backgroundImage}>
+        <View style={styles.ajustarTela}>
+          <View>
+            <Text style={styles.tituloDetalhe}>Expresso</Text>
+          </View>
+
+          <View style={styles.ajustarDetalhe}>
+            <Image style={styles.imagemDetalhe} source={require("./src/imgs/expresso.jpg")} />
+          </View>
+
+          <View style={styles.separador} />
+
+          <View>
+            <Text style={styles.itemDetalhe}>Nosso café expresso é a escolha perfeita para aqueles que buscam um momento de puro prazer e vitalidade.</Text>
+            <Text style={styles.itemDetalhe}>Seja para começar o dia com o pé direito ou para um rápido reabastecimento de energia</Text>
+          </View>
+
+        <View style={styles.separadorGrande} />
+
+          <View>
+            <Text style={styles.itemDetalhe}>R$: 2,50 (Xícara)</Text>
+            <Text style={styles.itemDetalhe}>R$: 5,00 (Xícara Grande)</Text>
+          </View>
+
+        </View>
+
+        <TouchableOpacity activeOpacity={0.8} style={styles.botaoForma} onPress={() => navigation.navigate("Cardapio")}>
+          <Text style={styles.botaoTexto}>Voltar</Text>
+        </TouchableOpacity>
+      </ImageBackground>
+    )
+  }
+
   return (
     <NavigationContainer>
       <StatusBar translucent={false} />
@@ -193,6 +232,7 @@ export default function App() {
         <Stack.Screen name='Cardapio' component={Cardapio} options={{ headerShown: false }} />
         <Stack.Screen name='QuemSomos' component={QuemSomos} options={{ headerShown: false }} />
         <Stack.Screen name='Contato' component={Contato} options={{ headerShown: false }} />
+        <Stack.Screen name='Detalhe' component={Detalhe} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -254,6 +294,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1E90FF',
   },
 
+
   botaoTexto: {
     fontSize: 16,
     lineHeight: 21,
@@ -292,7 +333,7 @@ const styles = StyleSheet.create({
   //Contato
   ajustarContato: {
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-around"
   },
 
   itemContato: {
@@ -302,4 +343,34 @@ const styles = StyleSheet.create({
     textAlignVertical: "center",
     marginBottom: 15
   },
+
+  //detalhe
+  ajustarDetalhe: {
+    flexDirection: "row",
+    justifyContent: "space-around"
+  },
+
+  imagemDetalhe: {
+    width: 200,
+    height: 200,
+    borderRadius: 20,
+  },
+
+  tituloDetalhe: {
+    color: "white",
+    fontSize: 50,
+    textAlign: "center",
+    textShadowColor: "red",
+    textShadowOffset: { width: 5, height: 5 },
+    textShadowRadius: 10,
+    padding: 20,
+  },
+
+  itemDetalhe: {
+    textAlign: 'justify',
+    textAlignVertical: "center",
+    color: "white",
+    fontSize: 25,
+  },
+
 });
