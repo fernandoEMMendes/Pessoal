@@ -2,11 +2,17 @@
     display: flex;
     text-align: center;
     padding: 10px;
+    font-size: 4rem;
+}
+
+.Borda {
+    background-color: lavender;
+    border: 0.125rem black;
+    border-radius: 0.5rem;
 }
 
 .Detalhes {
     text-align: center;
-    color: #DAA520;
     text-decoration: none;
 }
 

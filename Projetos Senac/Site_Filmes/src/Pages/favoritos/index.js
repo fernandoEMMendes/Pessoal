@@ -27,11 +27,10 @@ export default function Favoritos() {
         <div>
             {filmes.map((filme) => {
                 return (
-
                     <article key={filme.id}>
                         <a className='article'>{filme.title}</a> <br />
-                        
-                        <Link class="Detalhes" to={`/Detalhes/${filme.id}`}>Detalhes</Link><br />
+                        <img src={`https://image.tmdb.org/t/p/w300/${filme.poster_path}`} alt={filme.original_title} /><br />                      
+                            <Link class="Detalhes" to={`/Detalhes/${filme.id}`}>Detalhes</Link><br />
                         <button class="enviar" onClick={() => Excluirfilme(filme.id)}>Excluir</button>
                     </article>
                 )

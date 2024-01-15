@@ -4,10 +4,10 @@ import { ListarUnicoUserService } from "../../Services/Users/ListarUnicoUserServ
 
 export class ListarUnicoUserController {
     async handle(req:Request, res:Response){
-        const {userId} = req.body
+        const {usuarioId} = req.body
         const listarUnico = new ListarUnicoUserService()
         const response = await listarUnico.execute({
-            userId
+            usuarioId
         })
         return res.json(response)
     }

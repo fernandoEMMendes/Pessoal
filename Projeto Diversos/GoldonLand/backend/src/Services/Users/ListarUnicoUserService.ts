@@ -1,19 +1,19 @@
 import prisma from "../../prisma";
 
 interface ListarUnico {
-    userId: string
+    usuarioId: string
 }
 
 export class ListarUnicoUserService {
-    async execute({userId}:ListarUnico){
+    async execute({usuarioId}:ListarUnico){
 
         const response = await prisma.user.findFirst({
             where: {
-                id: userId
+                id: usuarioId
             },
             select: {
                 id: true,
-                name: true,
+                nome: true,
                 email: true
             }
         })

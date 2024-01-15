@@ -4,15 +4,15 @@ import { CriarInvService } from "../../Services/Inventory/CriarInvService"
 export class CriarInvController {
     async handle(req: Request, res: Response) {
         const {
-            categoryId, name, description, strength,
-            accuracy, defense, ac_crit,
-            mp_damage, quantity, userId
+            categoriaId, nome, descricao, forca,
+            precisao, defesa, pc_critico,
+            mp_dano, quantidade, usuarioId
         } = req.body
         const criar = new CriarInvService()
         const response = await criar.execute({
-            categoryId, name, description, strength,
-            accuracy, defense, ac_crit,
-            mp_damage, quantity, userId
+            categoriaId, nome, descricao, forca,
+            precisao, defesa, pc_critico,
+            mp_dano, quantidade, usuarioId
         })
         return res.json(response)
     }

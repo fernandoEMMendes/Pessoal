@@ -3,12 +3,12 @@ import { CriarUserService } from "../../Services/Users/CriarUserService"
 
 export class CriarUserController {
     async handle(req: Request, res: Response) {
-        const { name, email, password } = req.body
+        const { nome, email, senha } = req.body
         const criar = new CriarUserService()
         const response = await criar.execute({
-            name,
+            nome,
             email,
-            password
+            senha
         })
         return res.json(response)
     }

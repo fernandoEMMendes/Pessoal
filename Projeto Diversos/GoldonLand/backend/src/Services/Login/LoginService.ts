@@ -4,11 +4,11 @@ import { sign } from "jsonwebtoken"
 
 interface Login {
     email: string
-    senha: string
+    password: string
 }
 
 export class LoginService {
-    async execute({ email, senha }: Login) {
+    async execute({ email, password }: Login) {
         const usuario = await prisma.user.findFirst({
             where: {
                 email: email
@@ -16,7 +16,7 @@ export class LoginService {
         })
         if (!usuario) { throw new Error("Usuário/Senha não encontrados") }
 
-        const autenticar = await compare(senha, usuario.password)
+        const autenticar = await compare(password, usuario.senha)
         if (!autenticar) { throw new Error("Usuário/Senha não encontrados") }
 
         const token = sign(

@@ -3,10 +3,10 @@ import { LoginService } from "../../Services/Login/LoginService"
 
 export class LoginController {
     async handle(req: Request, res: Response) {
-        const { email, senha } = req.body
+        const { email, password } = req.body
         const login = new LoginService()
         const response = await login.execute({
-            email, senha
+            email, password
         })
         return res.json(response)
     }

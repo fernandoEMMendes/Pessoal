@@ -6,12 +6,12 @@ import apiLocal from "../../APIs/apiLocal"
 
 import "./Login.scss"
 //import placeholder from "../../imgs/placeholder.png"
-import goldenland from "../../imgs/goldenland.png"
+import goldenland from "../../imgs/goldenland4.png"
 
 export default function Login() {
     const navigation = useNavigate()
     const [email, setEmail] = useState("")
-    const [senha, setSenha] = useState("")
+    const [password, setpassword] = useState("")
 
     const { signIn } = useContext(AuthContext)
 
@@ -44,7 +44,7 @@ export default function Login() {
     async function handleLogin(e) {
         e.preventDefault(e)
 
-        if (!email || !senha) {
+        if (!email || !password) {
             toast.warning("Campos obrigatrios não preenchidos!")
             return
         }
@@ -52,7 +52,7 @@ export default function Login() {
         try {
             let data = {
                 email,
-                senha
+                password
             }
             const response = await signIn(data)
             const token = response.data.token
@@ -86,7 +86,7 @@ export default function Login() {
 
                     <label>Senha</label>
                     <br />
-                    <input type="password" value={senha} onChange={(e) => { setSenha(e.target.value) }} />
+                    <input type="password" value={password} onChange={(e) => { setpassword(e.target.value) }} />
 
                     <br /> <br />
 

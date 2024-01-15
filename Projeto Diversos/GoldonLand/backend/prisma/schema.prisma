@@ -11,47 +11,66 @@ datasource db {
 }
 
 model user {
-  id       String @id @default(uuid())
-  name     String
-  email    String
-  password String
+  id    String @id @default(uuid())
+  nome  String
+  email String
+  senha String
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
-  inventory inv[]
+  inventario invGeral[]
 
   @@map("Users")
 }
 
-model inv {
+model category {
+  id        String    @id @default(uuid())
+  nome      String
+  tipo      String
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  inventario invGeral[]
+  PveInimigo PveEnemy[]
+
+  @@map("Category")
+}
+
+model invGeral {
   id String @id @default(uuid())
 
-  type       category @relation(fields: [categoryId], references: [id])
-  categoryId String
+  categoria   category @relation(fields: [categoriaId], references: [id])
+  categoriaId String
 
-  name        String
-  description String
-  strength    String?
-  accuracy    String?
-  defense     String?
-  ac_crit     String?
-  mp_damage   String?
-  quantity    String
+  nome       String
+  descricao  String
+  forca      String?
+  precisao   String?
+  defesa     String?
+  pc_critico String?
+  mp_dano    String?
+  quantidade String
 
-  user   user   @relation(fields: [userId], references: [id])
-  userId String
+  usuario   user   @relation(fields: [usuarioId], references: [id])
+  usuarioId String
 
   @@map("Inventory")
 }
 
-model category {
-  id        String    @id @default(uuid())
-  name      String
-  create_at DateTime? @default(now())
-  update_at DateTime? @default(now())
+model PveEnemy {
+  id String @id @default(uuid())
 
-  inventory inv[]
+  nome      String
+  descricao String
+  img       String
+  pv        String
+  forca     String?
+  precisao  String?
+  recompensa String?
+  recompensa2 String?
+  recompensa3 String?
 
-  @@map("Category")
+  categoria   category @relation(fields: [categoriaId], references: [id])
+  categoriaId String
 }

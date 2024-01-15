@@ -2,14 +2,14 @@ import prisma from "../../prisma"
 import { hash } from "bcryptjs"
 
 interface Criar {
-    name: string
+    nome: string
     email: string
-    password: string
+    senha: string
 }
 
 export class CriarUserService {
-    async execute({ name, email, password }: Criar) {
-        if (!name || !email || !password) { throw new Error("Campos obrigatórios não preenchidos") }
+    async execute({ nome, email, senha }: Criar) {
+        if (!nome || !email || !senha) { throw new Error("Campos obrigatórios não preenchidos") }
         const verificarEmail = await prisma.user.findFirst({
             where: {
                 email: email
@@ -17,17 +17,17 @@ export class CriarUserService {
         })
         if (verificarEmail) { throw new Error("Email já cadastrado") }
 
-        const passwordCrypt = await hash(password, 8)
+        const passwordCrypt = await hash(senha, 8)
 
         await prisma.user.create({
             data: {
-                name: name,
+                nome: nome,
                 email: email,
-                password: passwordCrypt
+                senha: passwordCrypt
             },
             select: {
                 id: true,
-                name: true,
+                nome: true,
                 email: true
             }
         })
