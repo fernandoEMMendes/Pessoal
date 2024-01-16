@@ -1,21 +1,21 @@
 import prisma from "../../prisma";
 
 interface Criar {
-    name: string
-    type: string
+    nome: string
+    tipo: string
 }
 
 export class CriarCategoryService {
-    async execute({ name, type }: Criar) {
+    async execute({ nome, tipo }: Criar) {
         await prisma.category.create({
             data: {
-                name: name,
-                type: type
+                nome: nome,
+                tipo: tipo
             },
             select: ({
                 id: true,
-                name: true,
-                type: true
+                nome: true,
+                tipo: true
             })
         })
         return { message: "Category created successfully!" }

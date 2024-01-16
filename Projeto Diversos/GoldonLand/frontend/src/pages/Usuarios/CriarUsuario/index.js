@@ -4,21 +4,21 @@ import apiLocal from "../../../APIs/apiLocal"
 import { toast } from "react-toastify"
 
 export default function CriarUsuario() {
-    const [name, setName] = useState("")
+    const [nome, setNome] = useState("")
     const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [senha, setSenha] = useState("")
     const navigation = useNavigate()
 
     async function handleCriarConta(e) {
         e.preventDefault()
         try {
-            if (!name || !email || !password) {
+            if (!nome || !email || !senha) {
                 toast.warning("Campos obrigatrios não preenchidos!")
                 return
             }
 
             await apiLocal.post("/CriarUsuario", {
-                name, email, password
+                nome, email, senha
             })
             toast.success("Usuário cadastrado com sucesso")
             navigation("/")
@@ -38,7 +38,7 @@ export default function CriarUsuario() {
                 <form onSubmit={handleCriarConta}>
                     <label>Nome</label>
                     <br />
-                    <input type="text" value={name} onChange={(e) => { setName(e.target.value) }} />
+                    <input type="text" value={nome} onChange={(e) => { setNome(e.target.value) }} />
 
                     <br /><br />
 
@@ -50,7 +50,7 @@ export default function CriarUsuario() {
 
                     <label>Senha</label>
                     <br />
-                    <input type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                    <input type="password" value={senha} onChange={(e) => { setSenha(e.target.value) }} />
 
                     <br /><br />
 

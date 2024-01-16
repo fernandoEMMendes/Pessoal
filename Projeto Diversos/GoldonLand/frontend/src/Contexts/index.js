@@ -25,11 +25,11 @@ export default function AuthProvider({ children }) {
         }
     }
 
-    async function signIn({ email, senha }) {
+    async function signIn({ email, password }) {
         try {
             const response = await apiLocal.post("/Login", {
                 email,
-                senha
+                password
             })
             return response
         } catch (err) {
