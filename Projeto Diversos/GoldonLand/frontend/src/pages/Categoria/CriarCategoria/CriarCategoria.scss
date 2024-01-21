@@ -1,0 +1,63 @@
+body {
+    background-color: #333333;
+}
+
+.titulo {
+    color: white;
+    font-size: 40px;
+}
+
+.alinharTitulo {
+    text-align: center;
+
+    img {
+        margin-top: 5rem;
+        width: 500px;
+        height: auto;
+    }
+}
+
+.distancia {
+    padding-top: 5rem;
+}
+
+.alinharForm {
+    text-align: center;
+
+    label {
+        color: white;
+        font-size: 45px;
+    }
+
+
+
+    input, input:focus {
+        border: 3px solid;
+        background-color: white;
+        color: black;
+        font-size: 2rem;
+        box-shadow: 5px 10px;
+    }
+
+    input:hover {
+        background-color: lightgray;
+    }
+
+
+
+    button, button:hover {
+        background-color: white;
+        color: black;
+        padding-top: 0.5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 0.5rem;
+        font-size: 2.5rem;
+        box-shadow: 5px 5px;
+    }
+
+    button:active {
+        transform: translateY(2px);
+        box-shadow: 3px 3px;
+    }
+}

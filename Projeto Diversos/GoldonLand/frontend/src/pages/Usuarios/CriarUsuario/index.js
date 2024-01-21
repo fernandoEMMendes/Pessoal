@@ -13,7 +13,7 @@ export default function CriarUsuario() {
         e.preventDefault()
         try {
             if (!nome || !email || !senha) {
-                toast.warning("Campos obrigatrios não preenchidos!")
+                toast.warning("Campos obrigatórios não preenchidos!")
                 return
             }
 
