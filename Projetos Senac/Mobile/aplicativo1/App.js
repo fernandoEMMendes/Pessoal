@@ -133,7 +133,7 @@ export default function App() {
         <View style={styles.ajustarTela}>
           <Text style={styles.titulo}>Quem Somos?</Text>
           <Text style={styles.descricao}>Junior Barbosa</Text>
-          <Text style={styles.descricao2}>Filho de fámilia simplés, cheio de esperança e acima de tudo: amante do café</Text>
+          <Text style={styles.descricao2}>Filho de fámilia simples, cheio de esperança e acima de tudo: amante do café</Text>
           <Text style={styles.descricao}>Maria Antonia</Text>
           <Text style={styles.descricao2}>Irmã de Junior e criadora da cafeteria Café Barbosa, "Começou como uma piada entre fámilia e acabou como um sonho"</Text>
         </View>
