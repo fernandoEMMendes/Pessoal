@@ -43,31 +43,27 @@ export default function ListarCategoria() {
 
             <div className="alinharTabela">
                 <h1>Listar Categoria</h1>
-                {listarCategoria.map((resultados) => {
-                    return (
-                        <a key={resultados.id}>
-                            <div className="caixa">
-                                <table>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>NOME</th>
-                                        <th>TIPO</th>
-                                        <th>ALTERAR</th>
-                                        <th>DELETAR</th>
-                                    </tr>
-                                    <tr>
-                                        <th>{resultados.id}</th>
-                                        <th>{resultados.nome}</th>
-                                        <th>{resultados.tipo}</th>
-                                        <th>ALTERAR</th>
-                                        <th>DELETAR</th>
-                                    </tr>
-                                </table>
-                                <br />
-                            </div>
-                        </a>
-                    )
-                })}
+
+                <table className="caixa">
+                    <tr>
+                        <th>ID</th>
+                        <th>🎭NOME🎭</th>
+                        <th>🎫TIPO🎫</th>
+                        <th>ALTERAR</th>
+                        <th>DELETAR</th>
+                    </tr>
+                    {listarCategoria.map((resultados) => {
+                        return (
+                            <tr key={resultados.id}>
+                                <th>{resultados.id}</th>
+                                <th>{resultados.nome}</th>
+                                <th>{resultados.tipo}</th>
+                                <th>🖊</th>
+                                <th>❌</th>
+                            </tr>
+                        )
+                    })}
+                </table>
             </div>
         </div>
     )

@@ -20,6 +20,9 @@ export default function AuthProvider({ children }) {
             })
             setUser(response.data.id)
         } catch (err) {
+            if (err.response.status === 401) {
+                setUser("")
+            }
             toast.warning("Erro ao validar login!")
             return
         }
@@ -33,7 +36,7 @@ export default function AuthProvider({ children }) {
             })
             return response
         } catch (err) {
-            toast.warning("Erro ao validar login!")
+            toast.warning("Erro ao fazer login!")
             return
         }
     }

@@ -45,7 +45,7 @@ export class CriarInvService {
             return { message: "Category not found" }
         }
 
-        await prisma.invGeral.create({
+        await prisma.inventory.create({
             data: {
                 categoriaId: categoriaId,
                 nome: nome,

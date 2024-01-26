@@ -6,7 +6,7 @@ import apiLocal from "../../APIs/apiLocal"
 
 import "./Login.scss"
 //import placeholder from "../../imgs/placeholder.png"
-import goldenland from "../../imgs/goldenland4.png"
+import goldenland from "../../imgs/goldenland5.png"
 
 export default function Login() {
     const navigation = useNavigate()
@@ -69,11 +69,13 @@ export default function Login() {
     }
 
     return (
-        <div>
-            <div className="alinharTitulo">
-                <img src={goldenland} alt="logo" />
-            </div>
-
+        <div style={{ 
+            backgroundImage: `url(${goldenland})`,
+            backgroundRepeat:"no-repeat",
+            backgroundSize:"cover", 
+            height:"100vh",
+            }}>
+                
             <div className="distancia"></div>
 
             <div className="alinharForm">

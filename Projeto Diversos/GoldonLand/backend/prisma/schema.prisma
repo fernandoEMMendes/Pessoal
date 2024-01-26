@@ -19,26 +19,26 @@ model user {
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
-  inventario invGeral[]
+  inventario inventory[]
 
   @@map("Users")
 }
 
 model category {
-  id        String    @id @default(uuid())
-  nome      String
-  tipo      String
-  
+  id   String @id @default(uuid())
+  nome String
+  tipo String
+
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
-  inventario invGeral[]
+  inventario inventory[]
   PveInimigo PveEnemy[]
 
   @@map("Category")
 }
 
-model invGeral {
+model inventory {
   id String @id @default(uuid())
 
   categoria   category @relation(fields: [categoriaId], references: [id])
@@ -65,13 +65,13 @@ model invGeral {
 model PveEnemy {
   id String @id @default(uuid())
 
-  nome      String
-  descricao String
-  img       String
-  pv        String
-  forca     String?
-  precisao  String?
-  recompensa String?
+  nome        String
+  descricao   String
+  img         String
+  pv          String
+  forca       String?
+  precisao    String?
+  recompensa  String?
   recompensa2 String?
   recompensa3 String?
 

@@ -3,11 +3,15 @@ import { useNavigate } from "react-router-dom"
 import apiLocal from "../../../APIs/apiLocal"
 import { toast } from "react-toastify"
 
+import goldenland from "../../../imgs/goldenland5.png"
+import "./CriarUsuario.scss"
+
 export default function CriarUsuario() {
+    const navigation = useNavigate()
+    
     const [nome, setNome] = useState("")
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
-    const navigation = useNavigate()
 
     async function handleCriarConta(e) {
         e.preventDefault()
@@ -30,7 +34,12 @@ export default function CriarUsuario() {
     }
 
     return (
-        <div>
+        <div style={{
+            backgroundImage: `url(${goldenland})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            height: "100vh",
+        }}>
 
             <div className="distancia"></div>
 

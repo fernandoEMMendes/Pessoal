@@ -1,8 +1,7 @@
 import "./Principal.scss"
 import { useNavigate } from "react-router-dom"
-import React, { useState, useEffect, useContext } from "react"
+import React, { useEffect } from "react"
 import apiLocal from "../../APIs/apiLocal"
-import { AuthContext } from "../../Contexts"
 
 import Header from "../../components/Header"
 

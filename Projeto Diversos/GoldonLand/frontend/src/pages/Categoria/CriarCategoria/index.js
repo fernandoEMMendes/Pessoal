@@ -7,9 +7,10 @@ import { AuthContext } from "../../../Contexts"
 import "./CriarCategoria.scss"
 
 export default function CriarCategoria() {
+    const navigation = useNavigate()
+    
     const [nome, setNome] = useState("")
     const [tipo, setTipo] = useState("")
-    const navigation = useNavigate()
 
     const lsToken = localStorage.getItem("@GLToken2023")
     const token = JSON.parse(lsToken)

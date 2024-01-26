@@ -11,6 +11,7 @@ export default function App() {
     const [obj1, setObj1] = useState()
     const [obj2, setObj2] = useState()
     const [obj3, setObj3] = useState()
+    const [obj4, setObj4] = useState()
 
     var selectClass
     var primary
@@ -60,7 +61,18 @@ export default function App() {
     var spyMelee = ["Knife", "Your Eternal Reward", "Conniver's Kunai", "Big Earner", "Spy-cicle"]
     var spyWatch = ["Invis Watch", "Cloak and Dagger", "Dead Ringer"]
 
-    var contracts = ["20x kills", "15x airbone kills", "7x primary kills", "12x Kill + Trash Talk", "3x Taunt Kill", "Érica Triplekill","7x enviroment hazard kill", "Touch Grass", "Touch Grass (IRL)"]
+    var contracts = ["10x kills", "4x airbone kills", "5x primary kills", "Domination + Trash Talk", "3x Taunt Kill", "Érica Triplekill","7x enviroment hazard kill", "Touch Grass", "Crit kill + kill bind"]
+    var contractsScout = ["5 killstreak + taunt on kill", "ez on kill / kys on death"]
+    var contractsSoldier = ["Crocket multikill"]
+    var contractsPyro = ["Reflect crocket"]
+    var contractsDemo = ["Airbone crit pan kill", "Trimp crit pan kill"]
+    var contractsHeavy = ["5 jojo reference kills"]
+    var contractsEnginner = ["Idle enginnering sentry 5 killstreak"]
+    var contractsMedic = ["Pocket heavy ヾ(•ω•`)o", "The battle medic moment"]
+    var contractsSniper = ["'Lmao box' after kill until kicked"]
+    var contractsSpy = ["Facestab", "Weebspy trash talk"]
+
+    var contractMap = []
 
     function click() {
         selectClass = Math.round(Math.random() * 9)
@@ -68,46 +80,55 @@ export default function App() {
         if (selectClass === 0) {
             setClasse("Scout")
             WeaponRandomizer(5, 6, 8, scoutPrimary, scoutSecondary, scoutMelee)
+            //ContractRandomizer(contractsScout)
         }
 
         if (selectClass === 1) {
             setClasse("Soldier")
             WeaponRandomizer(8, 9, 6, soldierPrimary, soldierSecondary, soldierMelee)
+            //ContractRandomizer(contractsSoldier)
         }
 
         if (selectClass === 2) {
             setClasse("Pyro")
             WeaponRandomizer(5, 8, 10, pyroPrimary, pyroSecondary, pyroMelee)
+           //ContractRandomizer(contractsPyro)
         }
 
         if (selectClass === 3) {
             setClasse("Demoman")
             WeaponRandomizer(6, 6, 7, demoPrimary, demoSecondary, demoMelee)
+            //ContractRandomizer(contractsDemo)
         }
 
         if (selectClass === 4) {
             setClasse("Heavy")
             WeaponRandomizer(4, 6, 6, heavyPrimary, heavySecondary, heavyMelee)
+            //ContractRandomizer(contractsHeavy)
         }
 
         if (selectClass === 5) {
             setClasse("Enginner")
             WeaponRandomizer(5, 2, 5, enginnerPrimary, enginnerSecondary, enginnerMelee)
+           //ContractRandomizer(contractsEnginner)
         }
 
         if (selectClass === 6) {
             setClasse("Medic")
             WeaponRandomizer(3, 3, 4, medicPrimary, medicSecondary, medicMelee)
+            //ContractRandomizer(contractsMedic)
         }
 
         if (selectClass === 7) {
             setClasse("Sniper")
             WeaponRandomizer(6, 5, 3, sniperPrimary, sniperSecondary, sniperMelee)
+            //ContractRandomizer(contractsSniper)
         }
 
         if (selectClass === 8) {
             setClasse("Spy")
             WeaponRandomizer(4, 4, 2, spyPrimary, spyMelee, spyWatch)
+            //ContractRandomizer(contractsSpy)
         }
 
         ContractRandomizer()
@@ -138,7 +159,6 @@ export default function App() {
         setObj3(Math.floor(Math.random() * contracts.length))
         contratosSalvos.push(obj3)
         //console.log(contratosSalvos)
-
     }
 
     return (

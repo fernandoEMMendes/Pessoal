@@ -1,0 +1,17 @@
+.caixa {
+    margin: 10px;
+    justify-content: space-between;
+    display: inline-table;
+
+    table,
+    th,
+    td {
+        border: 1px solid;
+    }
+}
+
+.alinharTabela {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
