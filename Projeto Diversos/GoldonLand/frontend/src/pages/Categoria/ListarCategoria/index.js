@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import Header from "../../../components/Header"
-import { AuthContext } from "../../../Contexts"
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import apiLocal from "../../../APIs/apiLocal"
 import "./ListarCategoria.scss"
 
@@ -10,18 +9,30 @@ export default function ListarCategoria() {
 
     const [listarCategoria, setListarCategoria] = useState([""])
 
-    const { loginToken } = useContext(AuthContext)
     const lsToken = localStorage.getItem("@GLToken2023")
     const token = JSON.parse(lsToken)
 
     useEffect(() => {
+
         if (!token) {
             navigation("/")
             return
-        }
+        } else if (token) {
+            async function verificaToken() {
+                const response = await apiLocal.get("/ListarUnicoUsuario", {
+                    headers: {
+                        Authorization: "Bearer " + `${token}`
+                    }
+                })
 
-        loginToken()
-    }, []);
+                if (response.data.dados) {
+                    navigation("/")
+                    return
+                }
+            }
+            verificaToken()
+        }
+    }, [])
 
     useEffect(() => {
         async function verCategorias() {

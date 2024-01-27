@@ -1,6 +1,5 @@
 import Header from "../../../components/Header"
-import { useContext, useEffect, useState } from "react"
-import { AuthContext } from "../../../Contexts"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import apiLocal from "../../../APIs/apiLocal"
 import "./ListarUsuario.scss"
@@ -10,17 +9,29 @@ export default function ListarUsuario() {
 
     const [listarUsuario, setListarUsuario] = useState([""])
 
-    const { loginToken } = useContext(AuthContext)
     const lsToken = localStorage.getItem("@GLToken2023")
     const token = JSON.parse(lsToken)
 
     useEffect(() => {
+
         if (!token) {
             navigation("/")
             return
-        }
+        } else if (token) {
+            async function verificaToken() {
+                const response = await apiLocal.get("/ListarUnicoUsuario", {
+                    headers: {
+                        Authorization: "Bearer " + `${token}`
+                    }
+                })
 
-        loginToken()
+                if (response.data.dados) {
+                    navigation("/")
+                    return
+                }
+            }
+            verificaToken()
+        }
     }, [])
 
     useEffect(() => {

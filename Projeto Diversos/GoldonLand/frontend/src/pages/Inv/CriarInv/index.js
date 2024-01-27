@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import Header from "../../../components/Header"
-import { useState, useEffect, useContext } from "react"
-import { AuthContext } from "../../../Contexts"
+import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
 import apiLocal from "../../../APIs/apiLocal"
+import "./CriarInv.scss"
 
 export default function CriarInv() {
     const navigation = useNavigate()
@@ -19,21 +19,38 @@ export default function CriarInv() {
     const [usuarioId, setUsuarioId] = useState("")
     const [categoriaId, setCategoriaId] = useState("")
 
+    const [verCategoria, setVerCategoria] = useState([""])
+    const [verUsuario, setVerUsuario] = useState([""])
+
     const lsToken = localStorage.getItem("@GLToken2023")
     const token = JSON.parse(lsToken)
 
-    const { loginToken } = useContext(AuthContext)
     useEffect(() => {
+
         if (!token) {
             navigation("/")
             return
-        }
+        } else if (token) {
+            async function verificaToken() {
+                const response = await apiLocal.get("/ListarUnicoUsuario", {
+                    headers: {
+                        Authorization: "Bearer " + `${token}`
+                    }
+                })
 
-        loginToken()
+                if (response.data.dados) {
+                    navigation("/")
+                    return
+                }
+            }
+            verificaToken()
+        }
     }, [])
 
     async function handleCriarInv(e) {
         e.preventDefault()
+        console.log(nome, descricao, forca, precisao, defesa,
+            pc_critico, mp_dano, quantidade, usuarioId, categoriaId)
         try {
             if (!nome ||
                 !descricao ||
@@ -49,12 +66,42 @@ export default function CriarInv() {
                 return
             }
 
-            await apiLocal.post("/")
+            await apiLocal.post("/CriarItem", {
+                nome, descricao, forca, precisao, defesa,
+                pc_critico, mp_dano, quantidade, usuarioId, categoriaId
+            }, {
+                headers: {
+                    Authorization: "Bearer " + `${token}`
+                }
+            })
+            toast.success("Item criado com sucesso")
         } catch (err) {
             toast.error(err.response.data.error)
             return
         }
     }
+
+    useEffect(() => {
+        async function mostrarCategoria() {
+            const resposta = await apiLocal.get("/ListarCategoria", {
+                headers: {
+                    Authorization: "Bearer " + `${token}`
+                }
+            })
+            setVerCategoria(resposta.data)
+        }
+        mostrarCategoria()
+
+        async function mostrarUsuario() {
+            const resposta = await apiLocal.get("ListarUsuario", {
+                headers: {
+                    Authorization: "Bearer " + `${token}`
+                }
+            })
+            setVerUsuario(resposta.data)
+        }
+        mostrarUsuario()
+    }, [verCategoria || verUsuario])
 
     return (
         <div>
@@ -62,8 +109,97 @@ export default function CriarInv() {
                 <Header />
             </div>
 
-            <div>
-                <h1>Criar Inv</h1>
+            <div className="distancia"></div>
+
+            <div className="alinharForm">
+                <h1 className="titulo">Criar Item</h1>
+
+                <br />
+
+                <form onSubmit={handleCriarInv}>
+                    <label>Nome</label>
+                    <br />
+                    <input type="text" value={nome} onChange={(e) => { setNome(e.target.value) }} />
+
+                    <br /> <br />
+
+                    <label>Descrição</label>
+                    <br />
+                    <input type="text" value={descricao} onChange={(e) => { setDescricao(e.target.value) }} />
+
+                    <br /> <br />
+
+                    <label>Força</label>
+                    <br />
+                    <input type="number" value={forca} onChange={(e) => { setForca(e.target.value) }} />
+
+                    <br /> <br />
+
+                    <label>Precisão</label>
+                    <br />
+                    <input type="number" value={precisao} onChange={(e) => { setPrecisao(e.target.value) }} />
+
+                    <br /> <br />
+
+                    <label>defesa</label>
+                    <br />
+                    <input type="number" value={defesa} onChange={(e) => { setDefesa(e.target.value) }} />
+
+                    <br /> <br />
+
+                    <label>% de crítico</label> <br />
+                    <label>(0 = sem  crítico e 100 = garantido)</label>
+                    <br />
+                    <input type="number" value={pc_critico} onChange={(e) => { setPc_critico(e.target.value) }} />
+
+                    <br /> <br />
+
+                    <label>Multiplicador do crítico</label>
+                    <br />
+                    <input type="number" value={mp_dano} onChange={(e) => { setMp_dano(e.target.value) }} />
+
+                    <br /> <br />
+
+                    <label>quantidade</label>
+                    <br />
+                    <input type="number" value={quantidade} onChange={(e) => { setQuantidade(e.target.value) }} />
+
+                    <br /> <br />
+
+                    <label>usuário</label>
+                    <br />
+
+                    <select value={usuarioId} onChange={(e) => { setUsuarioId(e.target.value) }}>
+                        <option>-Selecione um-</option>
+                        {verUsuario.map((resultados) => {
+                            return (
+                                <option value={resultados.id} id={resultados.id}>
+                                    {resultados.nome}
+                                </option>
+                            )
+                        })}
+                    </select>
+
+                    <br /> <br />
+
+                    <label>categoria</label>
+                    <br />
+
+                    <select value={categoriaId} onChange={(e) => { setCategoriaId(e.target.value) }}>
+                        <option>-Selecione um-</option>
+                        {verCategoria.map((resultados) => {
+                            return (
+                                <option value={resultados.id} id={resultados.id}>
+                                    {resultados.nome}
+                                </option>
+                            )
+                        })}
+                    </select>
+
+                    <br /> <br />
+
+                    <button type="submit">Criar</button>
+                </form>
             </div>
         </div>
     )

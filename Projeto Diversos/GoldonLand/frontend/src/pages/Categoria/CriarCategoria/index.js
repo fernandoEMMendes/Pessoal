@@ -1,30 +1,40 @@
 import { toast } from "react-toastify"
 import Header from "../../../components/Header"
 import apiLocal from "../../../APIs/apiLocal"
-import { useContext, useEffect, useState } from "react"
+import {  useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { AuthContext } from "../../../Contexts"
 import "./CriarCategoria.scss"
 
 export default function CriarCategoria() {
     const navigation = useNavigate()
-    
+
     const [nome, setNome] = useState("")
     const [tipo, setTipo] = useState("")
 
     const lsToken = localStorage.getItem("@GLToken2023")
     const token = JSON.parse(lsToken)
 
-    const { loginToken } = useContext(AuthContext)
     useEffect(() => {
 
         if (!token) {
             navigation("/")
             return
-        }
+        } else if (token) {
+            async function verificaToken() {
+                const response = await apiLocal.get("/ListarUnicoUsuario", {
+                    headers: {
+                        Authorization: "Bearer " + `${token}`
+                    }
+                })
 
-        loginToken()
-    }, []);
+                if (response.data.dados) {
+                    navigation("/")
+                    return
+                }
+            }
+            verificaToken()
+        }
+    }, [])
 
     async function handleCriarCategoria(e) {
         e.preventDefault()
@@ -42,8 +52,6 @@ export default function CriarCategoria() {
                 }
             })
             toast.success("Categoria criada com sucesso")
-
-            console.log(nome, tipo)
         } catch (err) {
             toast.error(err.response.data.error)
             return

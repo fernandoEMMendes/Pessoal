@@ -33,7 +33,7 @@ export class CriarInvService {
             }
         })
         if (!verifyUser) {
-            return { message: "User not found" }
+            throw new Error("Usuario não encontrado") 
         }
 
         const verifyCategory = await prisma.category.findFirst({
@@ -42,7 +42,17 @@ export class CriarInvService {
             }
         })
         if (!verifyCategory) {
-            return { message: "Category not found" }
+            throw new Error("Categoria não encontrada")
+        }
+
+        const verifyItem = await prisma.inventory.findFirst({
+            where: {
+                nome: nome,
+                usuarioId: usuarioId
+            }
+        })
+        if (verifyItem) {
+            throw new Error("Item já adquirido pelo usuário")
         }
 
         await prisma.inventory.create({
@@ -56,7 +66,7 @@ export class CriarInvService {
                 pc_critico: pc_critico,
                 mp_dano: mp_dano,
                 quantidade: quantidade,
-                usuarioId
+                usuarioId: usuarioId
             }
         })
         return { message: "Item created successfully!" }

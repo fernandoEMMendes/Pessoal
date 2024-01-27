@@ -9,9 +9,10 @@ export default function Principal() {
 
     const navigation = useNavigate()
 
+    const lsToken = localStorage.getItem("@GLToken2023")
+    const token = JSON.parse(lsToken)
+
     useEffect(() => {
-        const lsToken = localStorage.getItem("@GLToken2023")
-        const token = JSON.parse(lsToken)
 
         if (!token) {
             navigation("/")
