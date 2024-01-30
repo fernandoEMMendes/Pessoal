@@ -13,27 +13,16 @@ export default function Principal() {
     const token = JSON.parse(lsToken)
 
     useEffect(() => {
+        async function verificaToken() {
+            const response = await apiLocal.get("/ListarUnicoUsuario")
 
-        if (!token) {
-            navigation("/")
-            return
-        } else if (token) {
-            async function verificaToken() {
-                const response = await apiLocal.get("/ListarUnicoUsuario", {
-                    headers: {
-                        Authorization: "Bearer " + `${token}`
-                    }
-                })
-
-                if (response.data.dados) {
-                    navigation("/")
-                    return
-                }
+            if (response.data.dados) {
+                navigation("/")
+                return
             }
-            verificaToken()
         }
-
-    }, []);
+        verificaToken()
+    }, [token])
 
     return (
         <div>

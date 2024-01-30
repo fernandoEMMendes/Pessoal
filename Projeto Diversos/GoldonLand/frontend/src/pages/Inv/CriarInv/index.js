@@ -26,26 +26,16 @@ export default function CriarInv() {
     const token = JSON.parse(lsToken)
 
     useEffect(() => {
+        async function verificaToken() {
+            const response = await apiLocal.get("/ListarUnicoUsuario")
 
-        if (!token) {
-            navigation("/")
-            return
-        } else if (token) {
-            async function verificaToken() {
-                const response = await apiLocal.get("/ListarUnicoUsuario", {
-                    headers: {
-                        Authorization: "Bearer " + `${token}`
-                    }
-                })
-
-                if (response.data.dados) {
-                    navigation("/")
-                    return
-                }
+            if (response.data.dados) {
+                navigation("/")
+                return
             }
-            verificaToken()
         }
-    }, [])
+        verificaToken()
+    }, [token])
 
     async function handleCriarInv(e) {
         e.preventDefault()
@@ -69,10 +59,6 @@ export default function CriarInv() {
             await apiLocal.post("/CriarItem", {
                 nome, descricao, forca, precisao, defesa,
                 pc_critico, mp_dano, quantidade, usuarioId, categoriaId
-            }, {
-                headers: {
-                    Authorization: "Bearer " + `${token}`
-                }
             })
             toast.success("Item criado com sucesso")
         } catch (err) {
@@ -83,21 +69,13 @@ export default function CriarInv() {
 
     useEffect(() => {
         async function mostrarCategoria() {
-            const resposta = await apiLocal.get("/ListarCategoria", {
-                headers: {
-                    Authorization: "Bearer " + `${token}`
-                }
-            })
+            const resposta = await apiLocal.get("/ListarCategoria")
             setVerCategoria(resposta.data)
         }
         mostrarCategoria()
 
         async function mostrarUsuario() {
-            const resposta = await apiLocal.get("ListarUsuario", {
-                headers: {
-                    Authorization: "Bearer " + `${token}`
-                }
-            })
+            const resposta = await apiLocal.get("ListarUsuario")
             setVerUsuario(resposta.data)
         }
         mostrarUsuario()

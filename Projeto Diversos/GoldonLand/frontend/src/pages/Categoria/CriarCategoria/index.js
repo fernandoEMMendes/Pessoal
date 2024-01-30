@@ -15,26 +15,16 @@ export default function CriarCategoria() {
     const token = JSON.parse(lsToken)
 
     useEffect(() => {
+        async function verificaToken() {
+            const response = await apiLocal.get("/ListarUnicoUsuario")
 
-        if (!token) {
-            navigation("/")
-            return
-        } else if (token) {
-            async function verificaToken() {
-                const response = await apiLocal.get("/ListarUnicoUsuario", {
-                    headers: {
-                        Authorization: "Bearer " + `${token}`
-                    }
-                })
-
-                if (response.data.dados) {
-                    navigation("/")
-                    return
-                }
+            if (response.data.dados) {
+                navigation("/")
+                return
             }
-            verificaToken()
         }
-    }, [])
+        verificaToken()
+    }, [token])
 
     async function handleCriarCategoria(e) {
         e.preventDefault()
@@ -46,10 +36,6 @@ export default function CriarCategoria() {
 
             await apiLocal.post("/CriarCategoria", {
                 nome, tipo
-            }, {
-                headers: {
-                    Authorization: "Bearer " + `${token}`
-                }
             })
             toast.success("Categoria criada com sucesso")
         } catch (err) {

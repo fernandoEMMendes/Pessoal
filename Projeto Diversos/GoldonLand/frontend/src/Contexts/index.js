@@ -1,3 +1,6 @@
+
+//Não utiliziado
+
 import { createContext, useState } from "react"
 import { toast } from "react"
 import apiLocal from "../APIs/apiLocal"

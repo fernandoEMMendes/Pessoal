@@ -13,34 +13,20 @@ export default function ListarUsuario() {
     const token = JSON.parse(lsToken)
 
     useEffect(() => {
+        async function verificaToken() {
+            const response = await apiLocal.get("/ListarUnicoUsuario")
 
-        if (!token) {
-            navigation("/")
-            return
-        } else if (token) {
-            async function verificaToken() {
-                const response = await apiLocal.get("/ListarUnicoUsuario", {
-                    headers: {
-                        Authorization: "Bearer " + `${token}`
-                    }
-                })
-
-                if (response.data.dados) {
-                    navigation("/")
-                    return
-                }
+            if (response.data.dados) {
+                navigation("/")
+                return
             }
-            verificaToken()
         }
-    }, [])
+        verificaToken()
+    }, [token])
 
     useEffect(() => {
         async function verUsuarios() {
-            const resposta = await apiLocal.get("/ListarUsuario", {
-                headers: {
-                    Authorization: "Bearer " + `${token}`
-                }
-            })
+            const resposta = await apiLocal.get("/ListarUsuario")
             setListarUsuario(resposta.data)
         }
         verUsuarios()

@@ -1,5 +1,8 @@
 import axios from "axios"
 
+const lsToken = localStorage.getItem("@GLToken2023")
+const token = JSON.parse(lsToken)
+
 const apiLocal = axios.create({
     baseURL: "http://localhost:4444",
     headers: {
