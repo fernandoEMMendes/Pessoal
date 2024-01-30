@@ -62,17 +62,17 @@ export default function App() {
     var spyWatch = ["Invis Watch", "Cloak and Dagger", "Dead Ringer"]
 
     var contracts = ["10x kills", "4x airbone kills", "5x primary kills", "Domination + Trash Talk", "3x Taunt Kill", "Érica Triplekill","7x enviroment hazard kill", "Touch Grass", "Crit kill + kill bind"]
-    var contractsScout = ["5 killstreak + taunt on kill", "ez on kill / kys on death"]
-    var contractsSoldier = ["Crocket multikill"]
-    var contractsPyro = ["Reflect crocket"]
-    var contractsDemo = ["Airbone crit pan kill", "Trimp crit pan kill"]
-    var contractsHeavy = ["5 jojo reference kills"]
-    var contractsEnginner = ["Idle enginnering sentry 5 killstreak"]
-    var contractsMedic = ["Pocket heavy ヾ(•ω•`)o", "The battle medic moment"]
-    var contractsSniper = ["'Lmao box' after kill until kicked"]
-    var contractsSpy = ["Facestab", "Weebspy trash talk"]
+    //var contractsScout = ["5 killstreak + taunt on kill", "ez on kill / kys on death"]
+    //var contractsSoldier = ["Crocket multikill"]
+    //var contractsPyro = ["Reflect crocket"]
+    //var contractsDemo = ["Airbone crit pan kill", "Trimp crit pan kill"]
+    //var contractsHeavy = ["5 jojo reference kills"]
+    //var contractsEnginner = ["Idle enginnering sentry 5 killstreak"]
+    //var contractsMedic = ["Pocket heavy ヾ(•ω•`)o", "The battle medic moment"]
+    //var contractsSniper = ["'Lmao box' after kill until kicked"]
+    //var contractsSpy = ["Facestab", "Weebspy trash talk"]
 
-    var contractMap = []
+    //var contractMap = []
 
     function click() {
         selectClass = Math.round(Math.random() * 9)
