@@ -18,6 +18,6 @@ export class CriarCategoryService {
                 tipo: true
             })
         })
-        return { message: "Category created successfully!" }
+        return { message: "Categoria criada com sucesso!" }
     }
 }
