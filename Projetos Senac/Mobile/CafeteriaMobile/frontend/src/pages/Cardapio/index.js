@@ -14,7 +14,7 @@ export default function Cardapio() {
                     style={styles.backgroundImage}>
 
                     <View style={styles.ajustarTela}>
-                        <Text style={styles.titulo}>Cardapio</Text>
+                        <Text style={styles.titulo}>Cardápio</Text>
 
                         <TouchableOpacity activeOpacity={0.8} style={styles.botaoMenu} onPress={() => navigation.navigate("Detalhe")}>
                             <View style={styles.ajustarMenu}>
