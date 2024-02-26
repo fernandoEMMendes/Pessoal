@@ -18,7 +18,7 @@ export default function CriarCategoria() {
         async function verificaToken() {
             const response = await apiLocal.get("/ListarUnicoUsuario")
 
-            if (response.data.dados) {
+            if (response.status === 401) {
                 navigation("/")
                 return
             }

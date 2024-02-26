@@ -29,7 +29,7 @@ export default function CriarInv() {
         async function verificaToken() {
             const response = await apiLocal.get("/ListarUnicoUsuario")
 
-            if (response.data.dados) {
+            if (response.status === 401) {
                 navigation("/")
                 return
             }
@@ -152,7 +152,7 @@ export default function CriarInv() {
                         {verUsuario.map((resultados) => {
                             return (
                                 <option value={resultados.id} id={resultados.id}>
-                                    {resultados.nome}
+                                    {resultados.email}
                                 </option>
                             )
                         })}
@@ -168,7 +168,7 @@ export default function CriarInv() {
                         {verCategoria.map((resultados) => {
                             return (
                                 <option value={resultados.id} id={resultados.id}>
-                                    {resultados.nome}
+                                    {resultados.email}
                                 </option>
                             )
                         })}

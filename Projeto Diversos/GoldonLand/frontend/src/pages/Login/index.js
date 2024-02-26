@@ -30,11 +30,9 @@ export default function Login() {
                     }
                 })
 
-                if (resposta.data.dados) {
+                if (resposta.status === 401) {
                     navigation('/')
                     return
-                } else if (resposta.data.id) {
-                    navigation('/Principal')
                 }
             }
             verificaToken()
