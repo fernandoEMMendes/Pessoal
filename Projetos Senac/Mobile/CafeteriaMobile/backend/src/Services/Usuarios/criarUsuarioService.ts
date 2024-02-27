@@ -2,19 +2,19 @@ import prismaClient from "../../prisma/index"
 import { hash } from "bcryptjs"
 
 interface criar {
-    nome: string
+    login: string
     senha: string
 }
 
 export class criarUsuarioService {
-    async execute({ nome, senha }: criar) {
-        if (!nome || !senha) { throw new Error("Campos obrigatórios em branco!") }
+    async execute({ login, senha }: criar) {
+        if (!login || !senha) { throw new Error("Campos obrigatórios em branco!") }
 
         const senhaCrypt = await hash(senha, 8)
 
         await prismaClient.usuarios.create({
             data: {
-                nome: nome,
+                login: login,
                 senha: senhaCrypt
             },
             select: {

@@ -13,100 +13,13 @@ datasource db {
 model Usuarios {
   id String @id @default(uuid())
 
-  nome  String
+  login String
   senha String
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
   @@map("usuario")
-}
-
-model Produtos {
-  id String @id @default(uuid())
-
-  nome   String
-  desc   String
-  banner String
-  preco  String
-  quant  String?
-  status String
-
-  categoria   Categoria @relation(fields: [categoriaId], references: [id])
-  categoriaId String
-
-  create_at DateTime? @default(now())
-  update_at DateTime? @default(now())
-
-  @@map("produto")
-}
-
-model Funcionarios {
-  id    String @id @default(uuid())
-  nome  String
-  senha String
-  cpf   String
-
-  setor   Setor  @relation(fields: [setorId], references: [id])
-  setorId String
-
-  Pedidos   Pedidos[]
-  PedidoADM PedidoADM[]
-
-  create_at DateTime? @default(now())
-  update_at DateTime? @default(now())
-
-  @@map("funcionario")
-}
-
-model Pedidos {
-  id   String @id @default(uuid())
-  mesa String
-
-  funcionario   Funcionarios @relation(fields: [funcionarioId], references: [id])
-  funcionarioId String
-
-  item1  String
-  quant1 String
-  item2  String
-  quant2 String
-  item3  String
-  quant3 String
-  item4  String
-  quant4 String
-  item5  String
-  quant5 String
-
-  create_at DateTime? @default(now())
-  update_at DateTime? @default(now())
-
-  @@map("pedido")
-}
-
-model PedidoADM {
-  id   String @id @default(uuid())
-  mesa String
-
-  funcionario   Funcionarios @relation(fields: [funcionarioId], references: [id])
-  funcionarioId String
-
-  item1  String
-  quant1 String
-  item2  String
-  quant2 String
-  item3  String
-  quant3 String
-  item4  String
-  quant4 String
-  item5  String
-  quant5 String
-
-  status String
-
-  create_at DateTime? @default(now())
-  update_at DateTime? @default(now())
-
-  @@map("pedidoadm")
 }
 
 model Categoria {
@@ -131,4 +44,73 @@ model Setor {
   update_at DateTime? @default(now())
 
   @@map("setor")
+}
+
+model Produtos {
+  id String @id @default(uuid())
+
+  nome   String
+  desc   String
+  banner String
+  preco  Decimal
+  quant  String?
+  status Boolean @default(true)
+
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  categoriaId String
+
+  create_at    DateTime?      @default(now())
+  update_at    DateTime?      @default(now())
+  item_pedidos item_pedidos[]
+
+  @@map("produto")
+}
+
+model Funcionarios {
+  id    String @id @default(uuid())
+  nome  String
+  senha String
+  cpf   String
+
+  setor   Setor  @relation(fields: [setorId], references: [id])
+  setorId String
+
+  Pedidos Pedidos[]
+
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("funcionario")
+}
+
+model Pedidos {
+  id            String   @id @default(uuid())
+  mesa          String
+  observacao    String?
+  draft         Boolean  @default(true)
+  ped_val_total Decimal?
+
+  funcionario   Funcionarios @relation(fields: [funcionarioId], references: [id])
+  funcionarioId String
+
+  create_at    DateTime?      @default(now())
+  update_at    DateTime?      @default(now())
+  item_pedidos item_pedidos[]
+
+  @@map("pedido")
+}
+
+model item_pedidos {
+  id        String @id @default(uuid())
+  quant     String
+  val_total String
+
+  produto   Produtos @relation(fields: [produtoId], references: [id])
+  produtoId String
+
+  pedidos  Pedidos @relation(fields: [pedidoId], references: [id])
+  pedidoId String
+
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
 }
