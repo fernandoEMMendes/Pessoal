@@ -22,7 +22,7 @@ model Usuarios {
   @@map("usuario")
 }
 
-model Categoria {
+model Categorias {
   id   String @id @default(uuid())
   nome String
 
@@ -34,7 +34,7 @@ model Categoria {
   @@map("categoria")
 }
 
-model Setor {
+model Setores {
   id   String @id @default(uuid())
   nome String
 
@@ -49,14 +49,15 @@ model Setor {
 model Produtos {
   id String @id @default(uuid())
 
-  nome   String
-  desc   String
-  banner String
-  preco  Decimal
-  quant  String?
-  status Boolean @default(true)
+  nome       String
+  desc       String
+  banner     String
+  fabricante String
+  preco      Decimal @db.Decimal(9, 2)
+  quant      Int     @default(0)
+  status     Boolean @default(true)
 
-  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  categoria   Categorias @relation(fields: [categoriaId], references: [id])
   categoriaId String
 
   create_at    DateTime?      @default(now())
@@ -70,9 +71,9 @@ model Funcionarios {
   id    String @id @default(uuid())
   nome  String
   senha String
-  cpf   String
+  cpf   String @unique
 
-  setor   Setor  @relation(fields: [setorId], references: [id])
+  setor   Setores @relation(fields: [setorId], references: [id])
   setorId String
 
   Pedidos Pedidos[]
@@ -88,7 +89,7 @@ model Pedidos {
   mesa          String
   observacao    String?
   draft         Boolean  @default(true)
-  ped_val_total Decimal?
+  ped_val_total Decimal? @db.Decimal(9, 2)
 
   funcionario   Funcionarios @relation(fields: [funcionarioId], references: [id])
   funcionarioId String
