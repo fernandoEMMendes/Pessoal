@@ -19,7 +19,7 @@ model Usuarios {
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
-  @@map("usuario")
+  @@map("Usuarios")
 }
 
 model Categorias {
@@ -31,7 +31,7 @@ model Categorias {
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
-  @@map("categoria")
+  @@map("Categorias")
 }
 
 model Setores {
@@ -43,7 +43,7 @@ model Setores {
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
-  @@map("setor")
+  @@map("Setores")
 }
 
 model Produtos {
@@ -62,9 +62,9 @@ model Produtos {
 
   create_at    DateTime?      @default(now())
   update_at    DateTime?      @default(now())
-  item_pedidos item_pedidos[]
+  item_pedidos Item_pedidos[]
 
-  @@map("produto")
+  @@map("Produtos")
 }
 
 model Funcionarios {
@@ -81,7 +81,7 @@ model Funcionarios {
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
-  @@map("funcionario")
+  @@map("Funcionarios")
 }
 
 model Pedidos {
@@ -96,12 +96,12 @@ model Pedidos {
 
   create_at    DateTime?      @default(now())
   update_at    DateTime?      @default(now())
-  item_pedidos item_pedidos[]
+  item_pedidos Item_pedidos[]
 
-  @@map("pedido")
+  @@map("Pedidos")
 }
 
-model item_pedidos {
+model Item_pedidos {
   id        String @id @default(uuid())
   quant     String
   val_total String
@@ -114,4 +114,6 @@ model item_pedidos {
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
+
+  @@map("Item_pedidos")
 }
