@@ -11,7 +11,7 @@ export default function App() {
     const [obj1, setObj1] = useState()
     const [obj2, setObj2] = useState()
     const [obj3, setObj3] = useState()
-    const [obj4, setObj4] = useState()
+    //const [obj4, setObj4] = useState()
 
     var selectClass
     var primary
