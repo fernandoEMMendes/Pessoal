@@ -12,3 +12,116 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Usuarios {
+  id String @id @default(uuid())
+
+  apelido String
+  email   String
+  senha   String
+
+
+
+  create_at DateTime?  @default(now())
+  update_at DateTime?  @default(now())
+  InvGeral  InvGeral[]
+
+  @@map("usuarios")
+}
+
+model Adms {
+  id String @id @default(uuid())
+
+  entrada String
+  senha   String
+
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("adms")
+}
+
+model Categorias {
+  id String @id @default(uuid())
+
+  nome String
+
+  create_at DateTime?  @default(now())
+  update_at DateTime?  @default(now())
+  Catalogo  Catalogo[]
+
+  @@map("caregorias")
+}
+
+model Catalogo {
+  id String @id @default(uuid())
+
+  nome     String
+  desc     String
+  forca    Int @default(0)
+  defesa   Int @default(0)
+  precisao Int @default(0)
+  taxaCrit Int @default(0)
+  multCrit Decimal @db.Decimal(9, 2)
+
+  categoria   Categorias @relation(fields: [categoriaId], references: [id])
+  categoriaId String
+
+  create_at    DateTime?      @default(now())
+  update_at    DateTime?      @default(now())
+  InvGeral     InvGeral[]
+  dropInimigos dropInimigos[]
+
+  @@map("catalogo")
+}
+
+model InvGeral {
+  id String @id @default(uuid())
+
+  equipado   Boolean @default(false)
+  quantidade Int @default(1)
+
+  catalogo   Catalogo @relation(fields: [catalogoId], references: [id])
+  catalogoId String
+
+  usuario   Usuarios @relation(fields: [usuarioId], references: [id])
+  usuarioId String
+
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("invGeral")
+}
+
+model Inimigos {
+  id String @id @default(uuid())
+
+  nome     String
+  desc     String
+  vida     Int @default(1)
+  forca    Int @default(0)
+  precisao Int @default(0)
+
+  create_at    DateTime?      @default(now())
+  update_at    DateTime?      @default(now())
+  dropInimigos dropInimigos[]
+
+  @@map("inimigos")
+}
+
+model dropInimigos {
+  id String @id @default(uuid())
+
+  quantidade Int @default(1)
+
+  inimigo   Inimigos @relation(fields: [inimigoId], references: [id])
+  inimigoId String
+
+  catalogo   Catalogo @relation(fields: [catalogoId], references: [id])
+  catalogoId String
+
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+
+  @@map("dropInimigos")
+}
