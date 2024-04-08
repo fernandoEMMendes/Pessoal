@@ -4,18 +4,18 @@ import { hash } from "bcryptjs"
 interface CriarUsuarios {
     apelido: string
     email: string
-    senha: string
+    password: string
 }
 
 export class UsuariosServices {
     async CriarUsuarios(
-        { apelido, email, senha }: CriarUsuarios
+        { apelido, email, password }: CriarUsuarios
     ) {
-        if (!apelido || !email || !senha) {
+        if (!apelido || !email || !password) {
             throw new Error("Campos obrigátorios em branco!")
         }
 
-        const senhaCrypt = await hash(senha, 8)
+        const senhaCrypt = await hash(password, 8)
         const resposta = await prismaClient.usuarios.create({
             data: {
                 apelido: apelido,
