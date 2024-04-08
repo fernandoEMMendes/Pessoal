@@ -20,8 +20,6 @@ model Usuarios {
   email   String
   senha   String
 
-
-
   create_at DateTime?  @default(now())
   update_at DateTime?  @default(now())
   InvGeral  InvGeral[]
@@ -58,10 +56,10 @@ model Catalogo {
 
   nome     String
   desc     String
-  forca    Int @default(0)
-  defesa   Int @default(0)
-  precisao Int @default(0)
-  taxaCrit Int @default(0)
+  forca    Int     @default(0)
+  defesa   Int     @default(0)
+  precisao Int     @default(0)
+  taxaCrit Int     @default(0)
   multCrit Decimal @db.Decimal(9, 2)
 
   categoria   Categorias @relation(fields: [categoriaId], references: [id])
@@ -79,7 +77,7 @@ model InvGeral {
   id String @id @default(uuid())
 
   equipado   Boolean @default(false)
-  quantidade Int @default(1)
+  quantidade Int     @default(1)
 
   catalogo   Catalogo @relation(fields: [catalogoId], references: [id])
   catalogoId String
@@ -98,9 +96,9 @@ model Inimigos {
 
   nome     String
   desc     String
-  vida     Int @default(1)
-  forca    Int @default(0)
-  precisao Int @default(0)
+  vida     Int    @default(1)
+  forca    Int    @default(0)
+  precisao Int    @default(0)
 
   create_at    DateTime?      @default(now())
   update_at    DateTime?      @default(now())
