@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0",
-  "description": "backend",
+  "description": "Test Backend GL",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev src/server.ts"

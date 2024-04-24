@@ -13,25 +13,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Usuarios {
+model Users {
   id String @id @default(uuid())
 
-  apelido String
-  email   String
-  senha   String
+  nickname String
+  email    String
+  password String
 
-  create_at DateTime?  @default(now())
-  update_at DateTime?  @default(now())
-  InvGeral  InvGeral[]
+  create_at DateTime? @default(now())
+  update_at DateTime? @default(now())
+  Inv       Inv[]
 
-  @@map("usuarios")
+  @@map("users")
 }
 
 model Adms {
   id String @id @default(uuid())
 
-  entrada String
-  senha   String
+  entry    String
+  password String
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
@@ -39,51 +39,51 @@ model Adms {
   @@map("adms")
 }
 
-model Categorias {
+model Categories {
   id String @id @default(uuid())
 
-  nome String
+  name String
 
   create_at DateTime?  @default(now())
   update_at DateTime?  @default(now())
-  Catalogo  Catalogo[]
+  Catalogy  Catalogy[]
 
-  @@map("caregorias")
+  @@map("categories")
 }
 
-model Catalogo {
+model Catalogy {
   id String @id @default(uuid())
 
-  nome     String
-  desc     String
-  forca    Int     @default(0)
-  defesa   Int     @default(0)
-  precisao Int     @default(0)
-  taxaCrit Int     @default(0)
-  multCrit Decimal @db.Decimal(9, 2)
+  name      String
+  desc      String
+  str       Int     @default(0)
+  def       Int     @default(0)
+  acc       Int     @default(0)
+  acc_crit  Int     @default(0)
+  mult_crit Decimal @db.Decimal(9, 2)
 
-  categoria   Categorias @relation(fields: [categoriaId], references: [id])
-  categoriaId String
+  category   Categories @relation(fields: [categoryId], references: [id])
+  categoryId String
 
-  create_at    DateTime?      @default(now())
-  update_at    DateTime?      @default(now())
-  InvGeral     InvGeral[]
-  dropInimigos dropInimigos[]
+  create_at   DateTime?     @default(now())
+  update_at   DateTime?     @default(now())
+  Inv         Inv[]
+  dropEnemies dropEnemies[]
 
   @@map("catalogo")
 }
 
-model InvGeral {
+model Inv {
   id String @id @default(uuid())
 
-  equipado   Boolean @default(false)
-  quantidade Int     @default(1)
+  equip Boolean @default(false)
+  quant Int     @default(1)
 
-  catalogo   Catalogo @relation(fields: [catalogoId], references: [id])
-  catalogoId String
+  catalogy   Catalogy @relation(fields: [catalogyId], references: [id])
+  catalogyId String
 
-  usuario   Usuarios @relation(fields: [usuarioId], references: [id])
-  usuarioId String
+  user   Users  @relation(fields: [userId], references: [id])
+  userId String
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
@@ -91,32 +91,32 @@ model InvGeral {
   @@map("invGeral")
 }
 
-model Inimigos {
+model Enemies {
   id String @id @default(uuid())
 
-  nome     String
-  desc     String
-  vida     Int    @default(1)
-  forca    Int    @default(0)
-  precisao Int    @default(0)
+  name String
+  desc String
+  hp   Int    @default(1)
+  str  Int    @default(0)
+  acc  Int    @default(0)
 
-  create_at    DateTime?      @default(now())
-  update_at    DateTime?      @default(now())
-  dropInimigos dropInimigos[]
+  create_at   DateTime?     @default(now())
+  update_at   DateTime?     @default(now())
+  dropEnemies dropEnemies[]
 
   @@map("inimigos")
 }
 
-model dropInimigos {
+model dropEnemies {
   id String @id @default(uuid())
 
-  quantidade Int @default(1)
+  quant Int @default(1)
 
-  inimigo   Inimigos @relation(fields: [inimigoId], references: [id])
-  inimigoId String
+  enemy   Enemies @relation(fields: [enemyId], references: [id])
+  enemyId String
 
-  catalogo   Catalogo @relation(fields: [catalogoId], references: [id])
-  catalogoId String
+  catalogy   Catalogy @relation(fields: [catalogyId], references: [id])
+  catalogyId String
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())

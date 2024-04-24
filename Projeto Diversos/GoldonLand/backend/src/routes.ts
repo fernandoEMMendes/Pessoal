@@ -1,12 +1,21 @@
 import { LoginControllers } from "./Controllers/LoginControllers"
-import { UsuariosControllers } from "./Controllers/UsuariosControllers"
+import { UsersControllers } from "./Controllers/UsersControllers"
+import { AdmsControllers } from "./Controllers/AdmsControllers"
+import { CategoriesControllers } from "./Controllers/CategoriesController"
 
 import { Router } from "express"
-export const rotas = Router()
 import { isAuth } from "./middleware/auth"
+export const routes = Router()
 
 //Logins
-rotas.post("/LoginUsuario", new LoginControllers().LoginUsuarios)
+routes.post("/LoginUser", new LoginControllers().LoginUsers)
+routes.post("/LoginAdm", new LoginControllers().LoginAdms)
 
-//Usuarios
-rotas.post("/CriarUsuarios", new UsuariosControllers().CriarUsuarios)
+//Users
+routes.post("/CreateUsers", new UsersControllers().CreateUsers)
+
+//Adms
+routes.post("/CreateAdms", new AdmsControllers().CreateAdms)
+
+//Categories 
+routes.post("/CreateCategories", new CategoriesControllers().CreateCategory)

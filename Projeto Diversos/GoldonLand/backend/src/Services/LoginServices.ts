@@ -2,46 +2,74 @@ import { prismaClient } from "../prisma";
 import { compare } from "bcryptjs"
 import { sign } from "jsonwebtoken"
 
-interface LoginUsuarios {
+interface LoginUsers {
     email: string
-    password: string
+    pass: string
+}
+
+interface LoginAdms {
+    entry: string
+    pass: string
 }
 
 export class LoginServices {
-    async LoginUsuarios({ email, password }: LoginUsuarios) {
-        if (!email || !password) {
+    async LoginUsers({ email, pass }: LoginUsers) {
+        if (!email || !pass) {
             throw new Error("Campos obrigátorios em branco!")
         }
 
-        const verificarEmail = await prismaClient.usuarios.findFirst({
+        const verifyEmail = await prismaClient.users.findFirst({
             where: {
                 email: email
             }
         })
-        if (!verificarEmail) {
+        if (!verifyEmail) {
             throw new Error("Email ou senha incorreto(s)!")
         }
 
-        const verificarPassword = await compare(password, verificarEmail.senha)
-        if (!verificarPassword) {
+        const verifyPassword = await compare(pass, verifyEmail.password)
+        if (!verifyPassword) {
             throw new Error("Email ou senha incorreto(s)!")
         }
 
         const token = sign(
             {
-                id: verificarEmail.id,
-                email: verificarEmail.email
+                id: verifyEmail.id,
+                email: verifyEmail.email
             },
             process.env.JWT_BAR,
             {
-                subject: verificarEmail.id,
+                subject: verifyEmail.id,
                 expiresIn: 3,
             }
         )
         return {
-            id: verificarEmail.id,
-            apelido: verificarEmail.apelido,
+            id: verifyEmail.id,
+            nickname: verifyEmail.nickname,
             token: token
+        }
+    }
+
+    async LoginAdms({entry, pass}:LoginAdms){
+        if (!entry || !pass) {
+            throw new Error("Campos obrigátorios em branco!")
+        }
+
+        const verifyEntry = await prismaClient.adms.findFirst({
+            where: {
+                entry: entry
+            }
+        })
+        if (!verifyEntry) {
+            throw new Error("Nome ou senha incorreto(s)!")
+        }
+        const verifyPassword = await compare(pass, verifyEntry.password)
+        if (!verifyPassword) {
+            throw new Error("Nome ou senha incorreto(s)!")
+        }
+
+        return {
+            entry: verifyEntry.entry
         }
     }
 }
