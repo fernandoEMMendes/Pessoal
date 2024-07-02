@@ -8,15 +8,22 @@ interface CreateUsers {
 }
 
 export class UsersServices {
-    async CreateUsers(
-        { nickname, email, pass }: CreateUsers
-    ) {
+    async CreateUsers({ nickname, email, pass }: CreateUsers) {
         if (!nickname || !email || !pass) {
             throw new Error("Campos obrigátorios em branco!")
         }
 
         const passCrypt = await hash(pass, 8)
-        const resposta = await prismaClient.users.create({
+        const verifyNickname = await prismaClient.users.findFirst({
+            where: {
+                nickname: nickname
+            }
+        })
+        if (verifyNickname) {
+            throw new Error(`${nickname}, já está sendo utilizado! Por favor escolha outro!`)
+        }
+
+        const response = await prismaClient.users.create({
             data: {
                 nickname: nickname,
                 email: email,
@@ -27,6 +34,6 @@ export class UsersServices {
                 email: true
             }
         })
-        return resposta
+        return response
     }
 }

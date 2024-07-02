@@ -68,6 +68,18 @@ export class LoginServices {
             throw new Error("Nome ou senha incorreto(s)!")
         }
 
+        const token = sign(
+            {
+                id: verifyEntry.id,
+                email: verifyEntry.entry
+            },
+            process.env.JWT_BAR,
+            {
+                subject: verifyEntry.id,
+                expiresIn: 3,
+            }
+        )
+
         return {
             entry: verifyEntry.entry
         }

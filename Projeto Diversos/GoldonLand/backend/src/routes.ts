@@ -5,6 +5,8 @@ import { CategoriesControllers } from "./Controllers/CategoriesController"
 
 import { Router } from "express"
 import { isAuth } from "./middleware/auth"
+import { CatalogyControllers } from "./Controllers/CatalogyControllers"
+import { InvControllers } from "./Controllers/InvControllers"
 export const routes = Router()
 
 //Logins
@@ -19,3 +21,9 @@ routes.post("/CreateAdms", new AdmsControllers().CreateAdms)
 
 //Categories 
 routes.post("/CreateCategories", new CategoriesControllers().CreateCategory)
+
+//Catalogy
+routes.post("/CreateCatalogy", new CatalogyControllers().CreateCatalogy)
+
+//Inv
+routes.post("/CreateInv", new InvControllers().CreateInv)

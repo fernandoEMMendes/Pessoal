@@ -67,7 +67,6 @@ model Catalogy {
 
   create_at   DateTime?     @default(now())
   update_at   DateTime?     @default(now())
-  Inv         Inv[]
   dropEnemies dropEnemies[]
 
   @@map("catalogo")
@@ -78,9 +77,6 @@ model Inv {
 
   equip Boolean @default(false)
   quant Int     @default(1)
-
-  catalogy   Catalogy @relation(fields: [catalogyId], references: [id])
-  catalogyId String
 
   user   Users  @relation(fields: [userId], references: [id])
   userId String

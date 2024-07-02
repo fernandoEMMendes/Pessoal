@@ -17,7 +17,7 @@ export class CatalogyServices {
             throw new Error("Campos obrigátorios em branco!")
         }
 
-        const resposta = await prismaClient.catalogy.create({
+        const response = await prismaClient.catalogy.create({
             data: {
                 name: name,
                 desc: desc,
@@ -33,6 +33,6 @@ export class CatalogyServices {
                 name: true
             }
         })
-        return resposta
+        return response
     }
 }

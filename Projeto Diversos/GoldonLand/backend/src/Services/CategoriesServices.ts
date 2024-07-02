@@ -10,7 +10,7 @@ export class CategoriesServices {
             throw new Error("Campos obrigátorios em branco!")
         }
 
-        const resposta = await prismaClient.categories.create({
+        const response = await prismaClient.categories.create({
             data: {
                 name: name
             },
@@ -18,6 +18,6 @@ export class CategoriesServices {
                 name: true
             }
         })
-        return resposta
+        return response
     }
 }

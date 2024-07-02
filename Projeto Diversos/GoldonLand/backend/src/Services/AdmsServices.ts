@@ -7,15 +7,22 @@ interface CreateAdms {
 }
 
 export class AdmsServices {
-    async CreateAdms(
-        { entry, pass }: CreateAdms
-    ) {
+    async CreateAdms({ entry, pass }: CreateAdms) {
         if (!entry || !pass) {
             throw new Error("Campos obrigátorios em branco!")
         }
 
         const passCrypt = await hash(pass, 8)
-        const resposta = await prismaClient.adms.create({
+        const verifyEntry = await prismaClient.adms.findFirst({
+            where: {
+                entry: entry
+            }
+        })
+        if (verifyEntry){
+            throw new Error(`${entry}, já está sendo utilizado! Por favor escolha outro!`)
+        }
+
+        const response = await prismaClient.adms.create({
             data: {
                 entry: entry,
                 password: passCrypt
@@ -24,6 +31,6 @@ export class AdmsServices {
                 entry: true
             }
         })
-        return resposta
+        return response
     }
 }

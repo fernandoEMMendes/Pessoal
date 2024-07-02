@@ -5,9 +5,9 @@ export class AdmsControllers {
     async CreateAdms(req: Request, res: Response) {
         const { entry, pass } = req.body
         const services = new AdmsServices
-        const resposta = await services.CreateAdms({
+        const response = await services.CreateAdms({
             entry, pass
         })
-        return res.json(resposta)
+        return res.json(response)
     }
 }
