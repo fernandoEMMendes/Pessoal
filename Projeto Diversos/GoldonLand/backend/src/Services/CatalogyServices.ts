@@ -30,7 +30,8 @@ export class CatalogyServices {
             },
             select: {
                 id: true,
-                name: true
+                name: true,
+                desc: true
             }
         })
         return response

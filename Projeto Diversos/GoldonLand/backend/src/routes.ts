@@ -7,6 +7,7 @@ import { Router } from "express"
 import { isAuth } from "./middleware/auth"
 import { CatalogyControllers } from "./Controllers/CatalogyControllers"
 import { InvControllers } from "./Controllers/InvControllers"
+import { EnemyControllers } from "./Controllers/EnemyControllers"
 export const routes = Router()
 
 //Logins
@@ -27,3 +28,9 @@ routes.post("/CreateCatalogy", new CatalogyControllers().CreateCatalogy)
 
 //Inv
 routes.post("/CreateInv", new InvControllers().CreateInv)
+
+//Enemies
+routes.post("/CreateEnemies", new EnemyControllers().CreateEnemies)
+
+//Drops
+routes.post("/AssignDrops", new EnemyControllers().AssignDrops)

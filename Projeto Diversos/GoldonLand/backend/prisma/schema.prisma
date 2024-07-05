@@ -68,6 +68,7 @@ model Catalogy {
   create_at   DateTime?     @default(now())
   update_at   DateTime?     @default(now())
   dropEnemies dropEnemies[]
+  Inv         Inv[]
 
   @@map("catalogo")
 }
@@ -80,6 +81,9 @@ model Inv {
 
   user   Users  @relation(fields: [userId], references: [id])
   userId String
+
+  catalogy   Catalogy @relation(fields: [catalogyId], references: [id])
+  catalogyId String
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
@@ -106,7 +110,8 @@ model Enemies {
 model dropEnemies {
   id String @id @default(uuid())
 
-  quant Int @default(1)
+  quantMin Int @default(1)
+  quantMax Int @default(1)
 
   enemy   Enemies @relation(fields: [enemyId], references: [id])
   enemyId String
